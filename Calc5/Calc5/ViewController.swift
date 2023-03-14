@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+// переменные для операций и результат
 class ViewController: UIViewController {
     
     var firstNumber: String = ""
@@ -16,11 +18,14 @@ class ViewController: UIViewController {
     var resultNumber: String = ""
     var numAfterResult: String = ""
     
-
+    
+// строка ввода
     @IBOutlet weak var numOnScreen: UILabel!
     
+    //кнопочки умножения, деления, вычитания, процнт и прочее
     @IBOutlet var calcButtons: [UIButton]!
     
+    // кнопочки от 0 до 9, кроме .
     @IBAction func numPressed(_ sender: UIButton) {
         if operatoin == "" {
             firstNumber += String(sender.tag)
@@ -33,6 +38,7 @@ class ViewController: UIViewController {
     }
     
     
+    // сброс до 0 (кнопка А/С)
     @IBAction func clear(_ sender: Any) {
         firstNumber = ""
         operatoin = ""
@@ -46,6 +52,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // дизайн кнопочек
         for button in calcButtons {
             button.layer.cornerRadius = button.frame.size.height / 2 ;
             button.titleLabel?.font = UIFont (name: "System", size: 24)
