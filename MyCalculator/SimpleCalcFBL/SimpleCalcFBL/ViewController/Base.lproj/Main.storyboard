@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,16 +33,10 @@
                         <constraints>
                             <constraint firstItem="Jvz-k6-UGX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="13I-b0-6mD"/>
                             <constraint firstItem="Jvz-k6-UGX" firstAttribute="centerX" secondItem="SOJ-bL-L3H" secondAttribute="centerX" id="4gR-DP-hwt"/>
-                            <constraint firstItem="Jvz-k6-UGX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="99.5" id="Chf-Xf-Bkf"/>
                             <constraint firstItem="SOJ-bL-L3H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="99" id="OyY-1l-zL7"/>
-                            <constraint firstItem="Jvz-k6-UGX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="50" id="TMr-D8-tRc"/>
-                            <constraint firstItem="Jvz-k6-UGX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="321" id="X5w-yl-Zu6"/>
                             <constraint firstItem="SOJ-bL-L3H" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="463" id="aFd-p1-dVB"/>
                             <constraint firstItem="SOJ-bL-L3H" firstAttribute="bottom" secondItem="Jvz-k6-UGX" secondAttribute="bottom" id="hdt-A7-VT2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jvz-k6-UGX" secondAttribute="bottom" constant="325" id="kWL-V0-Wfe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SOJ-bL-L3H" secondAttribute="bottom" constant="325" id="o1w-tE-YO3"/>
-                            <constraint firstItem="Jvz-k6-UGX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="50" id="q7d-No-Bq2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jvz-k6-UGX" secondAttribute="trailing" constant="99.5" id="vob-ql-dc1"/>
                         </constraints>
                     </view>
                 </viewController>
