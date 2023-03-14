@@ -11,7 +11,11 @@ import UIKit
 // переменные для операций и результат
 class ViewController: UIViewController {
     
-    var firstNumber: String = ""
+    var firstNumber: String = "" {
+        willSet {
+          print(newValue)
+        }
+      }
     var operatoin: String = ""
     var secondNumber: String = ""
     var haveResult: Bool = false
@@ -34,16 +38,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func dot(_ sender: Any) {
-       
+        
         // запятая
         if operatoin.isEmpty {
-            firstNumber += String(".")
-            numOnScreen.text = firstNumber
+            if Double(firstNumber + ".") != nil {
+                firstNumber += String(".")
+                numOnScreen.text = firstNumber
+            }
         } else {
-            secondNumber += String(".")
-            numOnScreen.text = secondNumber
+            if Double(secondNumber + ".") != nil {
+                secondNumber += String(".")
+                numOnScreen.text = secondNumber
+            }
         }
     }
+       
     
     @IBAction func equals(_ sender: Any) {
         resultNumber = String(doOperation())
