@@ -19,7 +19,50 @@ class ViewController: UIViewController {
     var numAfterResult: String = ""
     
     
-// строка ввода
+    @IBAction func add(_ sender: Any) {
+        operatoin = "+"
+    }
+    @IBAction func subtract(_ sender: Any) {
+        operatoin = "-"
+    }
+    @IBAction func multiply(_ sender: Any) {
+        operatoin = "×"
+    }
+    
+    @IBAction func divide(_ sender: Any) {
+        operatoin = "÷"
+    }
+    
+    @IBAction func dot(_ sender: Any) {
+       
+        // запятая
+        if operatoin.isEmpty {
+            firstNumber += String(".")
+            numOnScreen.text = firstNumber
+        } else {
+            secondNumber += String(".")
+            numOnScreen.text = secondNumber
+        }
+    }
+    
+    @IBAction func equals(_ sender: Any) {
+        resultNumber = String(doOperation())
+        numAfterResult = ""
+        
+        // показывать целое число, если после .0
+        let numArray = resultNumber.components(separatedBy: ".")
+        print(numArray)
+        if numArray[1] == "0" {
+            numOnScreen.text = numArray[0]
+        }
+        // показывать десятичное число
+        else {
+            numOnScreen.text = resultNumber
+        }
+    }
+    
+    
+    // строка ввода
     @IBOutlet weak var numOnScreen: UILabel!
     
     //кнопочки умножения, деления, вычитания, процнт и прочее
@@ -27,14 +70,20 @@ class ViewController: UIViewController {
     
     // кнопочки от 0 до 9, кроме .
     @IBAction func numPressed(_ sender: UIButton) {
+        // вводим первое число
         if operatoin == "" {
             firstNumber += String(sender.tag)
             numOnScreen.text = firstNumber
         } else if operatoin != "" && !haveResult {
-            firstNumber += String(sender.tag)
+            // вводим второе число
+            secondNumber += String(sender.tag)
             numOnScreen.text = secondNumber
         }
-
+        else if operatoin != "" && haveResult {
+            numAfterResult += String(sender.tag)
+            numOnScreen.text = numAfterResult
+        }
+        
     }
     
     
@@ -46,6 +95,7 @@ class ViewController: UIViewController {
         haveResult = false
         resultNumber = ""
         numAfterResult = ""
+        numOnScreen.text = "0"
     }
     
     override func viewDidLoad() {
@@ -61,11 +111,54 @@ class ViewController: UIViewController {
             button.layer.shadowRadius = 8
             button.layer.shadowOpacity = 1
             
-
+            
         }
         
     }
-
-
+    
+    func doOperation() -> Double {
+        if operatoin == "+" {
+            if !haveResult {
+                haveResult = true
+                return Double(firstNumber)! + Double(secondNumber)!
+            }
+            else {
+                return Double(resultNumber)! + Double(numAfterResult)!
+            }
+        }
+        
+        else if operatoin == "-" {
+            if !haveResult {
+                haveResult = true
+                return Double(firstNumber)! - Double(secondNumber)!
+            }
+            else {
+                return Double(resultNumber)! - Double(numAfterResult)!
+            }
+        }
+        else if operatoin == "×" {
+            if !haveResult {
+                haveResult = true
+                return Double(firstNumber)! * Double(secondNumber)!
+            }
+            else {
+                return Double(resultNumber)! * Double(numAfterResult)!
+            }
+        }
+        else if operatoin == "÷" {
+            if !haveResult {
+                haveResult = true
+                return Double(firstNumber)! / Double(secondNumber)!
+            }
+            else {
+                return Double(resultNumber)! / Double(numAfterResult)!
+            }
+        }
+        
+        return 0
+    }
 }
+    
+    
+    
 

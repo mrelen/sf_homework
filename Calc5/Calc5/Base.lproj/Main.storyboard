@@ -61,6 +61,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="÷">
                                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="divide:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zng-x3-P8F"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -114,6 +117,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="×">
                                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="multiply:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qjf-yC-kaT"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -167,6 +173,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="-">
                                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="subtract:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tCJ-hs-h10"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -227,6 +236,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="+">
                                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="add:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WOK-EK-aNp"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -258,6 +270,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title=".">
                                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="dot:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0hI-5f-1Wd"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0v-5h-tj2">
                                                 <rect key="frame" x="280" y="0.0" width="80" height="80"/>
@@ -269,6 +284,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="=">
                                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="equals:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TUm-sT-yiw"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
