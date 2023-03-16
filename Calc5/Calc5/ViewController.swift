@@ -23,6 +23,30 @@ class ViewController: UIViewController {
     var numAfterResult: String = ""
     
     
+    @IBAction func negative(_ sender: Any) {
+        if operatoin.isEmpty {
+            if firstNumber.starts(with: "-") {
+                firstNumber = String (firstNumber.dropFirst())
+            } else {
+                firstNumber = "-" + firstNumber
+               
+            }
+            numOnScreen.text = firstNumber
+        } else {
+            if firstNumber.starts(with: "") {
+                firstNumber = String (firstNumber.dropFirst())
+            } else {
+                firstNumber = "" + firstNumber
+               
+            }
+            numOnScreen.text = firstNumber
+        }
+    }
+    
+    @IBAction func percent(_ sender: Any) {
+        operatoin = "%"
+    }
+    
     @IBAction func add(_ sender: Any) {
         operatoin = "+"
     }
@@ -64,7 +88,7 @@ class ViewController: UIViewController {
         if numArray[1] == "0" {
             numOnScreen.text = numArray[0]
         }
-        // показывать десятичное число
+        // показывать десятичное число
         else {
             numOnScreen.text = resultNumber
         }
@@ -126,6 +150,15 @@ class ViewController: UIViewController {
     }
     
     func doOperation() -> Double {
+        if operatoin == "%" {
+            if !haveResult {
+                haveResult = true
+                return Double(firstNumber)! / 100 * Double(secondNumber)!
+            }
+            else {
+                return Double(resultNumber)! / 100 * Double(numAfterResult)!
+            }
+        }
         if operatoin == "+" {
             if !haveResult {
                 haveResult = true
@@ -167,7 +200,4 @@ class ViewController: UIViewController {
         return 0
     }
 }
-    
-    
-    
 
