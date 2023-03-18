@@ -74,9 +74,9 @@ func checkTypesThrow<T, U>(first: T, second: U) throws {
 do {
     try checkTypesThrow(first: "hello", second: 123) // String Int
 } catch ComparisonError.differentTypes {
-    print("Ошибка! Разные типы")
+    print("No")                               // разные типы
 } catch ComparisonError.sameTypes {
-    print("Ошибка! одинаковые типы")
+    print("Yes")                             // одинаковые типы
 } catch {
     print("Произошла неизвестная ошибка!")
 }
@@ -89,3 +89,5 @@ func compareValues<T: Equatable>(first: T, second: T) -> Bool {
 
 compareValues(first: "hello", second: "world") // false
 compareValues(first: 123, second: 123) // true
+
+// Спасибо за внимание! 
