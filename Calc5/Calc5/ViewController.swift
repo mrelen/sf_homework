@@ -82,15 +82,15 @@ class ViewController: UIViewController {
         resultNumber = String(doOperation())
         numAfterResult = ""
         
-        // показывать целое число, если после .0
         let numArray = resultNumber.components(separatedBy: ".")
-        print(numArray)
         if numArray[1] == "0" {
             numOnScreen.text = numArray[0]
-        }
-        // показывать десятичное число
-        else {
+        } else {
             numOnScreen.text = resultNumber
+        }
+        // максимальное число результата или count = 14 (четырнадцатизначное четное число)
+        if let result = Double(resultNumber), result > 99_999_999_999_999 { //99 триллионов
+            numOnScreen.text = "0"
         }
     }
     
