@@ -8,15 +8,17 @@
 import UIKit
 
 
-// переменные для операций и результат
+
 class ViewController: UIViewController {
     
+    
+    // переменные для операций и результат
     var firstNumber: String = "" {
         willSet {
           print(newValue)
         }
       }
-    var operatoin: String = ""
+    var operation: String = ""
     var secondNumber: String = ""
     var haveResult: Bool = false
     var resultNumber: String = ""
@@ -24,7 +26,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func negative(_ sender: Any) {
-        if operatoin.isEmpty {
+        if operation.isEmpty {
             if firstNumber.starts(with: "-") {
                 firstNumber = String (firstNumber.dropFirst())
             } else {
@@ -44,27 +46,27 @@ class ViewController: UIViewController {
     }
     
     @IBAction func percent(_ sender: Any) {
-        operatoin = "%"
+        operation = "%"
     }
     
     @IBAction func add(_ sender: Any) {
-        operatoin = "+"
+        operation = "+"
     }
     @IBAction func subtract(_ sender: Any) {
-        operatoin = "-"
+        operation = "-"
     }
     @IBAction func multiply(_ sender: Any) {
-        operatoin = "×"
+        operation = "×"
     }
     
     @IBAction func divide(_ sender: Any) {
-        operatoin = "÷"
+        operation = "÷"
     }
     
     @IBAction func dot(_ sender: Any) {
         
-        // запятая
-        if operatoin.isEmpty {
+        // точка
+        if operation.isEmpty {
             if Double(firstNumber + ".") != nil {
                 firstNumber += String(".")
                 numOnScreen.text = firstNumber
@@ -103,27 +105,46 @@ class ViewController: UIViewController {
     
     // кнопочки от 0 до 9, кроме .
     @IBAction func numPressed(_ sender: UIButton) {
-        // вводим первое число
-        if operatoin == "" {
+        
+        // вводим первое число, которое не больше 14 символов, иначе =0
+        if operation == "" {
             firstNumber += String(sender.tag)
-            numOnScreen.text = firstNumber
-        } else if operatoin != "" && !haveResult {
-            // вводим второе число
-            secondNumber += String(sender.tag)
-            numOnScreen.text = secondNumber
-        }
-        else if operatoin != "" && haveResult {
-            numAfterResult += String(sender.tag)
-            numOnScreen.text = numAfterResult
+            if firstNumber.count > 14 {
+                firstNumber = ""
+                    operation = ""
+                    secondNumber = ""
+                    haveResult = false
+                    resultNumber = ""
+                    numAfterResult = ""
+                numOnScreen.text = "0"
+            } else {
+                numOnScreen.text = firstNumber
+            }
         }
         
+        // вводим второе число, которое не превышает 14 символов, иначе =0
+        else if operation != "" && !haveResult {
+            secondNumber += String(sender.tag)
+            if secondNumber.count > 14 {
+                secondNumber = ""
+                    operation = ""
+                    firstNumber = ""
+                    haveResult = false
+                    resultNumber = ""
+                    numAfterResult = ""
+                numOnScreen.text = "0"
+            } else {
+                numOnScreen.text = secondNumber
+            }
+        }
     }
     
     
+
     // сброс до 0 (кнопка А/С)
     @IBAction func clear(_ sender: Any) {
         firstNumber = ""
-        operatoin = ""
+        operation = ""
         secondNumber = ""
         haveResult = false
         resultNumber = ""
@@ -146,11 +167,11 @@ class ViewController: UIViewController {
             
             
         }
-        
     }
     
+    // код еще в проекте, т.к. nil после первой операции, например 2 + 2 = 4 + 1 = nil
     func doOperation() -> Double {
-        if operatoin == "%" {
+        if operation == "%" {
             if !haveResult {
                 haveResult = true
                 return Double(firstNumber)! / 100 * Double(secondNumber)!
@@ -159,7 +180,7 @@ class ViewController: UIViewController {
                 return Double(resultNumber)! / 100 * Double(numAfterResult)!
             }
         }
-        if operatoin == "+" {
+        if operation == "+" {
             if !haveResult {
                 haveResult = true
                 return Double(firstNumber)! + Double(secondNumber)!
@@ -169,7 +190,7 @@ class ViewController: UIViewController {
             }
         }
         
-        else if operatoin == "-" {
+        else if operation == "-" {
             if !haveResult {
                 haveResult = true
                 return Double(firstNumber)! - Double(secondNumber)!
@@ -178,7 +199,7 @@ class ViewController: UIViewController {
                 return Double(resultNumber)! - Double(numAfterResult)!
             }
         }
-        else if operatoin == "×" {
+        else if operation == "×" {
             if !haveResult {
                 haveResult = true
                 return Double(firstNumber)! * Double(secondNumber)!
@@ -187,7 +208,7 @@ class ViewController: UIViewController {
                 return Double(resultNumber)! * Double(numAfterResult)!
             }
         }
-        else if operatoin == "÷" {
+        else if operation == "÷" {
             if !haveResult {
                 haveResult = true
                 return Double(firstNumber)! / Double(secondNumber)!
