@@ -41,7 +41,7 @@ class ViewController: UIViewController {
                 numOnScreen.text = firstNumber
             }
         }
-        
+ // ошибка в функци процент
   @IBAction func percent(_ sender: Any) {
             operation = "%"
         }
@@ -75,64 +75,70 @@ class ViewController: UIViewController {
     }
   }
     
-  @IBAction func equals(_ sender: Any) {
-      
-    resultNumber = String(doOperation())
-    numAfterResult = ""
-    // показывать целое число, если после .0
-    let numArray = resultNumber.components(separatedBy: ".")
-    print(numArray)
-    if numArray[1] == "0" {
-      numOnScreen.text = numArray[0]
+    @IBAction func equals(_ sender: Any) {
+        
+        // Use the result of the previous operation as the first number
+        var num1 = firstNumber
+        if haveResult {
+            num1 = resultNumber
+        }
+        
+        // Calculate the result
+        let num2 = secondNumber
+        let result = doOperation(num1: num1, num2: num2, operation: operation)
+        
+        // Show the result
+        resultNumber = String(result)
+        numAfterResult = ""
+        let numArray = resultNumber.components(separatedBy: ".")
+        if numArray[1] == "0" {
+            numOnScreen.text = numArray[0]
+        } else {
+            numOnScreen.text = resultNumber
+        }
+        
+        // Set variables for the next operation
+        firstNumber = resultNumber
+        secondNumber = ""
+        operation = ""
+        haveResult = true
+        
+        // Maximum result number is 99 trillion
+        if let result = Double(resultNumber), result > 99_999_999_999_999 {
+            numOnScreen.text = "0"
+        }
     }
-    // показывать десятичное число
-    else {
-      numOnScreen.text = resultNumber
-    }
-      // максимальное число результата или count = 14 (четырнадцатизначное четное число)
-             if let result = Double(resultNumber), result > 99_999_999_999_999 { //99 триллионов
-                 numOnScreen.text = "0"
-             }
-  }
     
   // строка ввода
   @IBOutlet weak var numOnScreen: UILabel!
   //кнопочки умножения, деления, вычитания, процнт и прочее
   @IBOutlet var calcButtons: [UIButton]!
   // кнопочки от 0 до 9, кроме .
-  @IBAction func numPressed(_ sender: UIButton) {
-      // вводим первое число, которое не больше 14 символов, иначе =0
-              if operation == "" {
-                  firstNumber += String(sender.tag)
-                  if firstNumber.count > 14 {
-                      firstNumber = ""
-                      operation = ""
-                      secondNumber = ""
-                      haveResult = false
-                      resultNumber = ""
-                      numAfterResult = ""
-                      numOnScreen.text = "0"
-                  } else {
-                      numOnScreen.text = firstNumber
-                  }
-              }
-              
-              // вводим второе число, которое не превышает 14 символов, иначе =0
-              else if operation != "" && !haveResult {
-                  secondNumber += String(sender.tag)
-                  if secondNumber.count > 14 {
-                      secondNumber = ""
-                      operation = ""
-                      firstNumber = ""
-                      haveResult = false
-                      resultNumber = ""
-                      numAfterResult = ""
-                      numOnScreen.text = "0"
-                  } else {
-                      numOnScreen.text = secondNumber
-                  }
-              }
-          }
+    @IBAction func numPressed(_ sender: UIButton) {
+        
+        // Use the result of the previous operation as the first number
+        if haveResult {
+            firstNumber = resultNumber
+            haveResult = false
+        }
+        
+        // Input the number
+        if operation == "" {
+            firstNumber += String(sender.tag)
+            if firstNumber.count > 14 {
+                clear(self)
+            } else {
+                numOnScreen.text = firstNumber
+            }
+        } else {
+            secondNumber += String(sender.tag)
+            if secondNumber.count > 14 {
+                clear(self)
+            } else {
+                numOnScreen.text = secondNumber
+            }
+        }
+    }
     
     
   // сброс до 0 (кнопка А/С)
@@ -162,52 +168,30 @@ class ViewController: UIViewController {
   }
     
     // код еще в проекте, т.к. nil после первой операции, например 2 + 2 = 4 + 1 = nil
-  func doOperation() -> Double {
-      if operation == "%" {
-                  if !haveResult {
-                      haveResult = true
-                      return Double(firstNumber)! / 100 * Double(secondNumber)!
-                  }
-                  else {
-                      return Double(resultNumber)! / 100 * Double(numAfterResult)!
-                  }
-              }
-    if operation == "+" {
-      if !haveResult {
-        haveResult = true
-        return Double(firstNumber)! + Double(secondNumber)!
-      }
-      else {
-        return Double(resultNumber)! + Double(numAfterResult)!
-      }
+    func doOperation(num1: String, num2: String, operation: String) -> Double {
+        var result = 0.0
+        
+        if operation == "%" {
+            result = Double(num1)! / 100.0
+        } else if operation == "+" {
+            result = Double(num1)! + Double(num2)!
+        } else if operation == "-" {
+            result = Double(num1)! - Double(num2)!
+        } else if operation == "×" {
+            result = Double(num1)! * Double(num2)!
+        } else if operation == "÷" {
+            if num2 != "" && Double(num2)! != 0 {
+                result = Double(num1)! / Double(num2)!
+            } else {
+                result = 0
+            }
+        }
+        
+        return result
     }
-    else if operation == "-" {
-      if !haveResult {
-        haveResult = true
-        return Double(firstNumber)! - Double(secondNumber)!
-      }
-      else {
-        return Double(resultNumber)! - Double(numAfterResult)!
-      }
-    }
-    else if operation == "×" {
-      if !haveResult {
-        haveResult = true
-        return Double(firstNumber)! * Double(secondNumber)!
-      }
-      else {
-        return Double(resultNumber)! * Double(numAfterResult)!
-      }
-    }
-    else if operation == "÷" {
-      if !haveResult {
-        haveResult = true
-        return Double(firstNumber)! / Double(secondNumber)!
-      }
-      else {
-        return Double(resultNumber)! / Double(numAfterResult)!
-      }
-    }
-    return 0
-  }
 }
+
+
+/*
+ Чтобы бесконечно выполнять математические операции с результатом, можно добавить цикл while внутри функции equals. Цикл должен выполняться до тех пор, пока пользователь не решит очистить калькулятор или выйти из приложения. Внутри цикла установить переменную firstNumber в значение resultNumber, чтобы предыдущий результат стал первым числом в следующей операции.
+ */
