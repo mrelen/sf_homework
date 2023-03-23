@@ -113,7 +113,7 @@ class ViewController: UIViewController {
     
   // строка ввода
   @IBOutlet weak var numOnScreen: UILabel!
-  //кнопочки умножения, деления, вычитания, процнт и прочее
+  // все кнопки на экране
   @IBOutlet var calcButtons: [UIButton]!
   // кнопочки от 0 до 9, кроме .
     @IBAction func numPressed(_ sender: UIButton) {
