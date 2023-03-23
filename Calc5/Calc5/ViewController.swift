@@ -22,7 +22,7 @@ class ViewController: UIViewController {
   var resultNumber: String = ""
   var numAfterResult: String = ""
     
-    // минус перед числом
+   // минус перед числом
    @IBAction func negative(_ sender: Any) {
             if operation.isEmpty {
                 if firstNumber.starts(with: "-") {
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
             }
         }
     
- // есть ошибка в функци процент
+ 
   @IBAction func percent(_ sender: Any) {
             operation = "%"
         }
@@ -170,12 +170,12 @@ class ViewController: UIViewController {
     }
   }
     
-    // производим арифметические операции (ошибка с процентом)
+    // производим арифметические операции
     func doOperation(num1: String, num2: String, operation: String) -> Double {
         var result = 0.0
         
         if operation == "%" {
-            result = Double(num1)! / 100.0
+            result = Double(num1)! / 100.0 * Double(num2)!
         } else if operation == "+" {
             result = Double(num1)! + Double(num2)!
         } else if operation == "-" {
