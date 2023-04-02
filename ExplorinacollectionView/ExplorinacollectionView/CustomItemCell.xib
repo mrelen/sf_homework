@@ -69,6 +69,11 @@
                 <constraint firstItem="eYT-zS-fbF" firstAttribute="top" secondItem="JqK-zf-y0s" secondAttribute="bottom" id="lt0-Qs-Q9D"/>
                 <constraint firstAttribute="bottom" secondItem="NbW-Su-PfA" secondAttribute="bottom" id="zfX-WZ-4gn"/>
             </constraints>
+            <connections>
+                <outlet property="imageView" destination="iDs-wt-Li0" id="Zft-9Q-4xL"/>
+                <outlet property="labelTextOne" destination="JqK-zf-y0s" id="b4G-pX-htf"/>
+                <outlet property="labelTextTwo" destination="eYT-zS-fbF" id="xbI-XT-6Hb"/>
+            </connections>
             <point key="canvasLocation" x="126.71755725190839" y="19.718309859154932"/>
         </collectionViewCell>
     </objects>
