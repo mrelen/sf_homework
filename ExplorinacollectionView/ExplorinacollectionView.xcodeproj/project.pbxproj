@@ -17,6 +17,8 @@
 		CE7DFB1B29D7D58000DFA173 /* ControllerOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DFB1A29D7D58000DFA173 /* ControllerOne.swift */; };
 		CE7DFB1D29D7D62200DFA173 /* ControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DFB1C29D7D62200DFA173 /* ControllerTwo.swift */; };
 		CE7DFB1F29D93CF700DFA173 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DFB1E29D93CF700DFA173 /* ItemCell.swift */; };
+		CE7DFB2229D94B7500DFA173 /* CustomItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DFB2029D94B7500DFA173 /* CustomItemCell.swift */; };
+		CE7DFB2329D94B7500DFA173 /* CustomItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7DFB2129D94B7500DFA173 /* CustomItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		CE7DFB1A29D7D58000DFA173 /* ControllerOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerOne.swift; sourceTree = "<group>"; };
 		CE7DFB1C29D7D62200DFA173 /* ControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerTwo.swift; sourceTree = "<group>"; };
 		CE7DFB1E29D93CF700DFA173 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		CE7DFB2029D94B7500DFA173 /* CustomItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemCell.swift; sourceTree = "<group>"; };
+		CE7DFB2129D94B7500DFA173 /* CustomItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				CE7DFB1C29D7D62200DFA173 /* ControllerTwo.swift */,
 				CE7DFB1A29D7D58000DFA173 /* ControllerOne.swift */,
 				CE7DFB1829D7D34400DFA173 /* MyCollectionVC.swift */,
+				CE7DFB2029D94B7500DFA173 /* CustomItemCell.swift */,
+				CE7DFB2129D94B7500DFA173 /* CustomItemCell.xib */,
 				CE7DFB0D29D7D16800DFA173 /* Assets.xcassets */,
 				CE7DFB0F29D7D16800DFA173 /* LaunchScreen.storyboard */,
 				CE7DFB1229D7D16800DFA173 /* Info.plist */,
@@ -138,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7DFB1129D7D16800DFA173 /* LaunchScreen.storyboard in Resources */,
+				CE7DFB2329D94B7500DFA173 /* CustomItemCell.xib in Resources */,
 				CE7DFB0E29D7D16800DFA173 /* Assets.xcassets in Resources */,
 				CE7DFB0C29D7D16700DFA173 /* Main.storyboard in Resources */,
 			);
@@ -151,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7DFB0929D7D16700DFA173 /* ViewController.swift in Sources */,
+				CE7DFB2229D94B7500DFA173 /* CustomItemCell.swift in Sources */,
 				CE7DFB0529D7D16700DFA173 /* AppDelegate.swift in Sources */,
 				CE7DFB1D29D7D62200DFA173 /* ControllerTwo.swift in Sources */,
 				CE7DFB1929D7D34400DFA173 /* MyCollectionVC.swift in Sources */,
