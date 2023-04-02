@@ -8,59 +8,60 @@
 import UIKit
 
 private let reuseIdentifier = "ItemCell"
+private let customReuseIdentifier = "CustomItemCell" // название переменной
+
+struct StructCustomItem {
+    let image: String
+    let textOne: String
+    let textTwo: String
+}
+
+struct  StructItem {
+  let image: String
+  let text: String
+}
 
 class MyCollectionVC: UICollectionViewController {
+    
+    var arrayItems = [StructItem]()
+    var arrayCistomItem = [StructCustomItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let xib = UINib(nibName: customReuseIdentifier, bundle: nil)
+        collectionView.register(xib, forCellWithReuseIdentifier: customReuseIdentifier)
+        
         arrayItems.append(StructItem(image: "temp.darkYellow", text: "Dark yellow color"))
         arrayItems.append(StructItem(image: "temp.orange", text: "Orange color"))
         arrayItems.append(StructItem(image: "temp.red", text: "Red color"))
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-
-        print("Hello")
-        // Do any additional setup after loading the view.
+        
+        
+        
+        arrayCistomItem.append(StructCustomItem(image: "temp.lightYellow", textOne: "Light yellow color", textTwo: "Item 1"))
+        arrayCistomItem.append(StructCustomItem(image: "temp.orange", textOne: "Orange color", textTwo: "Item 2"))
+        arrayCistomItem.append(StructCustomItem(image: "temp.red", textOne: "Red color", textTwo: "Item 3"))
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    struct  StructItem {
-      let image: String
-      let text: String
-    }
-    var arrayItems = [StructItem]()
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return arrayItems.count
+        return arrayCistomItem.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ItemCell {
-          cell.imageView.image = UIImage(named: arrayItems[indexPath.row].image)
-          cell.labelText.text = arrayItems[indexPath.row].text
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customReuseIdentifier, for: indexPath) as? CustomItemCell {
+          cell.imageView.image = UIImage(named: arrayCistomItem[indexPath.row].image)
+          cell.labelTextOne.text = arrayCistomItem[indexPath.row].textOne
+          cell.labelTextTwo.text = arrayCistomItem[indexPath.row].textTwo
           return cell
         }
+        
         return UICollectionViewCell()
       }
 
