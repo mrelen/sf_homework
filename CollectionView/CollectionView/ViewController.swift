@@ -39,28 +39,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-        else {
-            return
-        }
-        var currentSelectedImage: String!
-        
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC else { return }
         if collectionView == collectionViewOne {
-            currentSelectedImage = arrayTemperature[indexPath.row]
+            let currentSelectedImage = arrayTemperature[indexPath.row]
+            vc.setImageName(name: currentSelectedImage)
+            present(vc, animated: true, completion: nil)
         }
         
         if collectionView == collectionViewTwo {
-            currentSelectedImage = arraySmiles[indexPath.row]
+            let currentSelectedImage = arraySmiles[indexPath.row]
+            vc.setImageName(name: currentSelectedImage)
+            present(vc, animated: true, completion: nil)
         }
-        
-        vc.setImageName(name: currentSelectedImage)
-        present(vc, animated: true, completion: nil)
-        
-        currentSelectedImage = arrayTemperature[indexPath.row]
-        vc.setImageName(name: currentSelectedImage)
-        
-        present(vc, animated: true, completion: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
