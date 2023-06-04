@@ -9,17 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //кнопки
     @IBOutlet weak var circle1: UIView!
     @IBOutlet weak var circle2: UIView!
     @IBOutlet weak var circle3: UIView!
     @IBOutlet weak var circle4: UIView!
     @IBOutlet weak var circle5: UIView!
 
-    var circles: [UIView] = []
+    var circles: [UIView] = [] // Массив для хранения представлений шариков
 
     override func viewDidLoad() {
             super.viewDidLoad()
             
+        // Настройка вида фонового изображения
             let backgroundImage = UIImage(named: "цирк")
             let backgroundImageView = UIImageView(image: backgroundImage)
             backgroundImageView.contentMode = .scaleAspectFill
@@ -29,90 +31,101 @@ class ViewController: UIViewController {
             view.addSubview(backgroundImageView)
             view.sendSubviewToBack(backgroundImageView)
         
-        // Set the image of circle1
+        
+        
+       // Настройка представления изображения для каждого круга
+        // CIRCLE 1
         let circle1Image = UIImage(named: "красныймяч")
         let circle1ImageView = UIImageView(image: circle1Image)
         circle1ImageView.contentMode = .scaleAspectFill
         circle1ImageView.frame = circle1.bounds
         circle1ImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        // Remove any existing subviews from circle1
+       // Удаляем все существующие подпредставления из circle1
         circle1.subviews.forEach { $0.removeFromSuperview() }
         
-        // Add the image view to circle1
+        // Добавляем представление изображения в circle1
         circle1.addSubview(circle1ImageView)
         
-        // Set the image of circle2
+        
+        // CIRCLE 2
         let circle2Image = UIImage(named: "зеленыймяч")
         let circle2ImageView = UIImageView(image: circle2Image)
         circle2ImageView.contentMode = .scaleAspectFill
         circle2ImageView.frame = circle2.bounds
         circle2ImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        // Remove any existing subviews from circle2
+        // Удаляем все существующие подпредставления из circle2
         circle2.subviews.forEach { $0.removeFromSuperview() }
         
-        // Add the image view to circle2
+        // Добавляем представление изображения в circle2
         circle2.addSubview(circle2ImageView)
         
         
-        // Set the image of circle3
+        // CIRCLE 3
         let circle3Image = UIImage(named: "синиймяч")
         let circle3ImageView = UIImageView(image: circle3Image)
         circle3ImageView.contentMode = .scaleAspectFill
         circle3ImageView.frame = circle3.bounds
         circle3ImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        // Remove any existing subviews from circle3
+        // Удаляем все существующие подпредставления из circle3
         circle3.subviews.forEach { $0.removeFromSuperview() }
         
-        // Add the image view to circle3
+        // обавляем представление изображения в circle3
         circle3.addSubview(circle3ImageView)
         
         
-        // Set the image of circle4
+        // CIRCLE 4
         let circle4Image = UIImage(named: "желтыймяч")
         let circle4ImageView = UIImageView(image: circle4Image)
         circle4ImageView.contentMode = .scaleAspectFill
         circle4ImageView.frame = circle4.bounds
         circle4ImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        // Remove any existing subviews from circle4
+        // Удаляем все существующие подпредставления из circle4
         circle4.subviews.forEach { $0.removeFromSuperview() }
         
-        // Add the image view to circle4
+        // Добавляем представление изображения в circle4
         circle4.addSubview(circle4ImageView)
         
         
-        // Set the image of circle5
+        // CIRCLE 5
         let circle5Image = UIImage(named: "оранжевыймяч")
         let circle5ImageView = UIImageView(image: circle5Image)
         circle5ImageView.contentMode = .scaleAspectFill
         circle5ImageView.frame = circle5.bounds
         circle5ImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        // Remove any existing subviews from circle5
+        // Удаляем все существующие подпредставления из circle5
         circle5.subviews.forEach { $0.removeFromSuperview() }
         
-        // Add the image view to circle5
+        // Добавляем представление изображения в circle5
         circle5.addSubview(circle5ImageView)
         
         
         
-        
+        // создаем массив с именем «circles» и присваивает ему вьюшки «circle1...4». Эти экземпляры соединены как аутлеты на сториборде.
         circles = [circle1, circle2, circle3, circle4, circle5]
         
+        //изначально я пользовалась этими цветами, пока не загрузила изображения
         let circleColors: [UIColor] = [.red, .green, .blue, .yellow, .orange]
-        
+    
+        // извлекает цвета из массива и делает края круглыми
         for (index, circle) in circles.enumerated() {
             circle.backgroundColor = circleColors[index]
             circle.layer.cornerRadius = circle.bounds.height / 2
             
+       // распознаватель жестов, перетаскивание кругов
             let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
             circle.addGestureRecognizer(panGestureRecognizer)
         }
     }
     
+    
+    // проверка того, пересекается ли шарик с какими-либо другими шариками, и функция отвечает за выполнение необходимых действий. Здесь мне помог chatgpt. Он добавил анимацию по заданым условиям, я хотела, чтобы шарик обьединялись и новый шарик увеличивался на 2%, а его максимальный размер был 360х360
+    
+    //перемещение по Х и У
     @objc func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
         guard let circle = gestureRecognizer.view else { return }
         
@@ -129,19 +142,19 @@ class ViewController: UIViewController {
         }
     }
     
-    func checkForOverlap(_ circle: UIView) {
+    func checkForOverlap(_ circle: UIView) { // перекрытие
         for otherCircle in circles {
             if otherCircle != circle && circle.frame.intersects(otherCircle.frame) {
-                // Merge the circles into one
+                // Объедините шариков в один
                 UIView.animate(withDuration: 0.3) {
                     otherCircle.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
                     otherCircle.alpha = 0
                     circle.backgroundColor = UIColor.systemIndigo
                     
-                    // Increase the size of the merged circle by 2%
+                    // Увеличение объединенного круга на 2%
                     let increasedSize = CGSize(width: circle.bounds.width * 1.02, height: circle.bounds.height * 1.02)
                     
-                    // Check if the increased size exceeds the maximum size constraint
+                    // Проверка, превышает ли увеличенный размер максимальное ограничение размера
                     let maxWidth: CGFloat = 360
                     let maxHeight: CGFloat = 360
                     let constrainedSize = CGSize(width: min(increasedSize.width, maxWidth), height: min(increasedSize.height, maxHeight))
