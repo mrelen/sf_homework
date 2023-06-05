@@ -7,6 +7,7 @@
 
 import UIKit
 
+// я установила только портретную ориентацию
 class ViewController: UIViewController {
     
     //кнопки
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
             
-        // Настройка вида фонового изображения
+        // Настройка вида фонового изображения. Изначально там были системные цвета, все как надо по условию, но я сделала по дефолту, чтобы это не отвлекало меня
             let backgroundImage = UIImage(named: "цирк")
             let backgroundImageView = UIImageView(image: backgroundImage)
             backgroundImageView.contentMode = .scaleAspectFill
@@ -172,4 +173,6 @@ class ViewController: UIViewController {
         }
     }
 }
+
+
 
