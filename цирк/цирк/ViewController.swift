@@ -39,6 +39,10 @@ class ViewController: UIViewController {
         // цвет обводки
         restartButton.layer.borderWidth = 2
         // ширина линии обводки
+        UIButton.animate(withDuration: 0.5, delay: 0, options: [.repeat, .autoreverse], animations: {
+            self.restartButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+        }, completion: nil)
+        // анимация кнопки (пульс, увеличивается-уменьшается)
         
         
         // Настройка вида фонового изображения. Изначально там были системные цвета, все как надо по условию, но я сделала по дефолту, чтобы это не отвлекало меня
@@ -144,9 +148,9 @@ class ViewController: UIViewController {
     
     @IBAction func restartButtonTapped(_ sender: UIButton) {
         // сброс состояния кругов
-        circles.forEach { circle in
-            circle.transform = .identity
-            circle.alpha = 1
+        circles.forEach { circle in // выполняется итерация по каждому элементу, цикл
+            circle.transform = .identity // сброс трансформации
+            circle.alpha = 1 // делает круг непрозрачным
         }
         
         // удаляем все существующие анимации
@@ -222,7 +226,6 @@ class ViewController: UIViewController {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             self.restartButton.isHidden = false
                         }
-
                     }
                 }
             }
