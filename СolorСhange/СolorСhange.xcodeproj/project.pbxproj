@@ -7,29 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE6E49DE2A2EC85500C0D134 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E49DD2A2EC85500C0D134 /* Confetti.swift */; };
-		CEC1BB9E2A2D398500D24F14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1BB9D2A2D398500D24F14 /* AppDelegate.swift */; };
-		CEC1BBA02A2D398500D24F14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1BB9F2A2D398500D24F14 /* SceneDelegate.swift */; };
-		CEC1BBA22A2D398500D24F14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1BBA12A2D398500D24F14 /* ViewController.swift */; };
-		CEC1BBA52A2D398500D24F14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC1BBA32A2D398500D24F14 /* Main.storyboard */; };
-		CEC1BBA72A2D398600D24F14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC1BBA62A2D398600D24F14 /* Assets.xcassets */; };
-		CEC1BBAA2A2D398600D24F14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC1BBA82A2D398600D24F14 /* LaunchScreen.storyboard */; };
+		CE9211D42A3220B3000CA654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9211D32A3220B3000CA654 /* AppDelegate.swift */; };
+		CE9211D62A3220B3000CA654 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9211D52A3220B3000CA654 /* SceneDelegate.swift */; };
+		CE9211D82A3220B3000CA654 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9211D72A3220B3000CA654 /* ViewController.swift */; };
+		CE9211DB2A3220B3000CA654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9211D92A3220B3000CA654 /* Main.storyboard */; };
+		CE9211DD2A3220B4000CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9211DC2A3220B4000CA654 /* Assets.xcassets */; };
+		CE9211E02A3220B4000CA654 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9211DE2A3220B4000CA654 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE6E49DD2A2EC85500C0D134 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
-		CEC1BB9A2A2D398500D24F14 /* цирк.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "цирк.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEC1BB9D2A2D398500D24F14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEC1BB9F2A2D398500D24F14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEC1BBA12A2D398500D24F14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CEC1BBA42A2D398500D24F14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CEC1BBA62A2D398600D24F14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CEC1BBA92A2D398600D24F14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CEC1BBAB2A2D398600D24F14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE9211D02A3220B3000CA654 /* СolorСhange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "СolorСhange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9211D32A3220B3000CA654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE9211D52A3220B3000CA654 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CE9211D72A3220B3000CA654 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE9211DA2A3220B3000CA654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE9211DC2A3220B4000CA654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE9211DF2A3220B4000CA654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE9211E12A3220B4000CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CEC1BB972A2D398500D24F14 /* Frameworks */ = {
+		CE9211CD2A3220B3000CA654 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,73 +37,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CEC1BB912A2D398500D24F14 = {
+		CE9211C72A3220B3000CA654 = {
 			isa = PBXGroup;
 			children = (
-				CEC1BB9C2A2D398500D24F14 /* цирк */,
-				CEC1BB9B2A2D398500D24F14 /* Products */,
+				CE9211D22A3220B3000CA654 /* СolorСhange */,
+				CE9211D12A3220B3000CA654 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CEC1BB9B2A2D398500D24F14 /* Products */ = {
+		CE9211D12A3220B3000CA654 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEC1BB9A2A2D398500D24F14 /* цирк.app */,
+				CE9211D02A3220B3000CA654 /* СolorСhange.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CEC1BB9C2A2D398500D24F14 /* цирк */ = {
+		CE9211D22A3220B3000CA654 /* СolorСhange */ = {
 			isa = PBXGroup;
 			children = (
-				CEC1BB9D2A2D398500D24F14 /* AppDelegate.swift */,
-				CEC1BB9F2A2D398500D24F14 /* SceneDelegate.swift */,
-				CEC1BBA12A2D398500D24F14 /* ViewController.swift */,
-				CE6E49DD2A2EC85500C0D134 /* Confetti.swift */,
-				CEC1BBA32A2D398500D24F14 /* Main.storyboard */,
-				CEC1BBA62A2D398600D24F14 /* Assets.xcassets */,
-				CEC1BBA82A2D398600D24F14 /* LaunchScreen.storyboard */,
-				CEC1BBAB2A2D398600D24F14 /* Info.plist */,
+				CE9211D32A3220B3000CA654 /* AppDelegate.swift */,
+				CE9211D52A3220B3000CA654 /* SceneDelegate.swift */,
+				CE9211D72A3220B3000CA654 /* ViewController.swift */,
+				CE9211D92A3220B3000CA654 /* Main.storyboard */,
+				CE9211DC2A3220B4000CA654 /* Assets.xcassets */,
+				CE9211DE2A3220B4000CA654 /* LaunchScreen.storyboard */,
+				CE9211E12A3220B4000CA654 /* Info.plist */,
 			);
-			path = "цирк";
+			path = "СolorСhange";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CEC1BB992A2D398500D24F14 /* цирк */ = {
+		CE9211CF2A3220B3000CA654 /* СolorСhange */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEC1BBAE2A2D398600D24F14 /* Build configuration list for PBXNativeTarget "цирк" */;
+			buildConfigurationList = CE9211E42A3220B4000CA654 /* Build configuration list for PBXNativeTarget "СolorСhange" */;
 			buildPhases = (
-				CEC1BB962A2D398500D24F14 /* Sources */,
-				CEC1BB972A2D398500D24F14 /* Frameworks */,
-				CEC1BB982A2D398500D24F14 /* Resources */,
+				CE9211CC2A3220B3000CA654 /* Sources */,
+				CE9211CD2A3220B3000CA654 /* Frameworks */,
+				CE9211CE2A3220B3000CA654 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "цирк";
-			productName = "цирк";
-			productReference = CEC1BB9A2A2D398500D24F14 /* цирк.app */;
+			name = "СolorСhange";
+			productName = "СolorСhange";
+			productReference = CE9211D02A3220B3000CA654 /* СolorСhange.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CEC1BB922A2D398500D24F14 /* Project object */ = {
+		CE9211C82A3220B3000CA654 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					CEC1BB992A2D398500D24F14 = {
-						CreatedOnToolsVersion = 14.2;
+					CE9211CF2A3220B3000CA654 = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
-			buildConfigurationList = CEC1BB952A2D398500D24F14 /* Build configuration list for PBXProject "цирк" */;
+			buildConfigurationList = CE9211CB2A3220B3000CA654 /* Build configuration list for PBXProject "СolorСhange" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,56 +110,55 @@
 				en,
 				Base,
 			);
-			mainGroup = CEC1BB912A2D398500D24F14;
-			productRefGroup = CEC1BB9B2A2D398500D24F14 /* Products */;
+			mainGroup = CE9211C72A3220B3000CA654;
+			productRefGroup = CE9211D12A3220B3000CA654 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CEC1BB992A2D398500D24F14 /* цирк */,
+				CE9211CF2A3220B3000CA654 /* СolorСhange */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CEC1BB982A2D398500D24F14 /* Resources */ = {
+		CE9211CE2A3220B3000CA654 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC1BBAA2A2D398600D24F14 /* LaunchScreen.storyboard in Resources */,
-				CEC1BBA72A2D398600D24F14 /* Assets.xcassets in Resources */,
-				CEC1BBA52A2D398500D24F14 /* Main.storyboard in Resources */,
+				CE9211E02A3220B4000CA654 /* LaunchScreen.storyboard in Resources */,
+				CE9211DD2A3220B4000CA654 /* Assets.xcassets in Resources */,
+				CE9211DB2A3220B3000CA654 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CEC1BB962A2D398500D24F14 /* Sources */ = {
+		CE9211CC2A3220B3000CA654 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC1BBA22A2D398500D24F14 /* ViewController.swift in Sources */,
-				CE6E49DE2A2EC85500C0D134 /* Confetti.swift in Sources */,
-				CEC1BB9E2A2D398500D24F14 /* AppDelegate.swift in Sources */,
-				CEC1BBA02A2D398500D24F14 /* SceneDelegate.swift in Sources */,
+				CE9211D82A3220B3000CA654 /* ViewController.swift in Sources */,
+				CE9211D42A3220B3000CA654 /* AppDelegate.swift in Sources */,
+				CE9211D62A3220B3000CA654 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CEC1BBA32A2D398500D24F14 /* Main.storyboard */ = {
+		CE9211D92A3220B3000CA654 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CEC1BBA42A2D398500D24F14 /* Base */,
+				CE9211DA2A3220B3000CA654 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		CEC1BBA82A2D398600D24F14 /* LaunchScreen.storyboard */ = {
+		CE9211DE2A3220B4000CA654 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CEC1BBA92A2D398600D24F14 /* Base */,
+				CE9211DF2A3220B4000CA654 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -170,7 +166,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CEC1BBAC2A2D398600D24F14 /* Debug */ = {
+		CE9211E22A3220B4000CA654 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -220,7 +216,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -230,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		CEC1BBAD2A2D398600D24F14 /* Release */ = {
+		CE9211E32A3220B4000CA654 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -274,7 +270,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -284,7 +280,7 @@
 			};
 			name = Release;
 		};
-		CEC1BBAF2A2D398600D24F14 /* Debug */ = {
+		CE9211E52A3220B4000CA654 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -293,17 +289,18 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 624Z3YM248;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "цирк/Info.plist";
+				INFOPLIST_FILE = "СolorСhange/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BTeam.----";
+				PRODUCT_BUNDLE_IDENTIFIER = "BTeam.-olor-hange";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -311,7 +308,7 @@
 			};
 			name = Debug;
 		};
-		CEC1BBB02A2D398600D24F14 /* Release */ = {
+		CE9211E62A3220B4000CA654 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -320,17 +317,18 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 624Z3YM248;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "цирк/Info.plist";
+				INFOPLIST_FILE = "СolorСhange/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BTeam.----";
+				PRODUCT_BUNDLE_IDENTIFIER = "BTeam.-olor-hange";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -341,25 +339,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CEC1BB952A2D398500D24F14 /* Build configuration list for PBXProject "цирк" */ = {
+		CE9211CB2A3220B3000CA654 /* Build configuration list for PBXProject "СolorСhange" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CEC1BBAC2A2D398600D24F14 /* Debug */,
-				CEC1BBAD2A2D398600D24F14 /* Release */,
+				CE9211E22A3220B4000CA654 /* Debug */,
+				CE9211E32A3220B4000CA654 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CEC1BBAE2A2D398600D24F14 /* Build configuration list for PBXNativeTarget "цирк" */ = {
+		CE9211E42A3220B4000CA654 /* Build configuration list for PBXNativeTarget "СolorСhange" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CEC1BBAF2A2D398600D24F14 /* Debug */,
-				CEC1BBB02A2D398600D24F14 /* Release */,
+				CE9211E52A3220B4000CA654 /* Debug */,
+				CE9211E62A3220B4000CA654 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CEC1BB922A2D398500D24F14 /* Project object */;
+	rootObject = CE9211C82A3220B3000CA654 /* Project object */;
 }

@@ -16,25 +16,44 @@ class ViewController: UIViewController {
     @IBOutlet weak var circle3: UIView!
     @IBOutlet weak var circle4: UIView!
     @IBOutlet weak var circle5: UIView!
-
-    var circles: [UIView] = [] // Массив для хранения представлений шариков
-
+    @IBOutlet weak var restartButton: UIButton!
+    
+    var circles: [UIView] = [] // массив для хранения представлений шариков
+    
     override func viewDidLoad() {
-            super.viewDidLoad()
-            
+        super.viewDidLoad()
+        
+        restartButton.isHidden = true // кнопка скрыта
+        
+        restartButton.layer.cornerRadius = 30
+        // скругление углов кнопки
+           restartButton.layer.shadowColor = UIColor.black.cgColor
+        // черный цвет тени
+           restartButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        // смещение тени от кнопки
+           restartButton.layer.shadowRadius = 10
+        // радиусом размытия тени
+        restartButton.layer.shadowOpacity = 0.5
+        // регулирует прозрачность тени
+        restartButton.layer.borderColor = UIColor.systemGreen.cgColor
+        // цвет обводки
+        restartButton.layer.borderWidth = 2
+        // ширина линии обводки
+        
+        
         // Настройка вида фонового изображения. Изначально там были системные цвета, все как надо по условию, но я сделала по дефолту, чтобы это не отвлекало меня
-            let backgroundImage = UIImage(named: "цирк")
-            let backgroundImageView = UIImageView(image: backgroundImage)
-            backgroundImageView.contentMode = .scaleAspectFill
-            backgroundImageView.frame = view.bounds
-            backgroundImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            
-            view.addSubview(backgroundImageView)
-            view.sendSubviewToBack(backgroundImageView)
+        let backgroundImage = UIImage(named: "цирк")
+        let backgroundImageView = UIImageView(image: backgroundImage)
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.frame = view.bounds
+        backgroundImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        view.addSubview(backgroundImageView)
+        view.sendSubviewToBack(backgroundImageView)
         
         
         
-       // Настройка представления изображения для каждого круга
+        // Настройка представления изображения для каждого круга
         // CIRCLE 1
         let circle1Image = UIImage(named: "красныймяч")
         let circle1ImageView = UIImageView(image: circle1Image)
@@ -42,7 +61,7 @@ class ViewController: UIViewController {
         circle1ImageView.frame = circle1.bounds
         circle1ImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-       // Удаляем все существующие подпредставления из circle1
+        // Удаляем все существующие подпредставления из circle1
         circle1.subviews.forEach { $0.removeFromSuperview() }
         
         // Добавляем представление изображения в circle1
@@ -111,18 +130,34 @@ class ViewController: UIViewController {
         
         //изначально я пользовалась этими цветами, пока не загрузила изображения
         let circleColors: [UIColor] = [.red, .green, .blue, .yellow, .orange]
-    
+        
         // извлекает цвета из массива и делает края круглыми
         for (index, circle) in circles.enumerated() {
             circle.backgroundColor = circleColors[index]
             circle.layer.cornerRadius = circle.bounds.height / 2
             
-       // распознаватель жестов, перетаскивание кругов
+            // распознаватель жестов, перетаскивание кругов
             let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
             circle.addGestureRecognizer(panGestureRecognizer)
         }
     }
     
+    @IBAction func restartButtonTapped(_ sender: UIButton) {
+        // сброс состояния кругов
+        circles.forEach { circle in
+            circle.transform = .identity
+            circle.alpha = 1
+        }
+        
+        // удаляем все существующие анимации
+        circles.forEach { circle in
+            circle.layer.removeAllAnimations()
+        }
+        
+        // снова скрываем кнопку перезагрузки
+        restartButton.isHidden = true
+    }
+
     
     // проверка того, пересекается ли шарик с какими-либо другими шариками, и функция отвечает за выполнение необходимых действий. Здесь мне помог chatgpt. Он добавил анимацию по заданым условиям, я хотела, чтобы шарик обьединялись и новый шарик увеличивался на 2%, а его максимальный размер был 360х360
     
@@ -168,11 +203,29 @@ class ViewController: UIViewController {
                     circle.layer.cornerRadius = constrainedSize.width / 2
                 } completion: { _ in
                     otherCircle.removeFromSuperview()
+   
+                    // новый код, анимация (ичезновение шариков)
+                    if self.circles.last == otherCircle {
+                       
+                        let animation = CABasicAnimation(keyPath: "opacity")
+                        animation.fromValue = 1
+                        animation.toValue = 0
+                        animation.duration = 2
+                        animation.autoreverses = false
+                        animation.fillMode = .forwards
+                        animation.isRemovedOnCompletion = false
+                        circle.layer.add(animation, forKey: "changeOpacity")
+                        
+                       
+                        self.circles.removeLast() //удаление последнего из области видимости
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            self.restartButton.isHidden = false
+                        }
+
+                    }
                 }
             }
         }
     }
 }
-
-
-
