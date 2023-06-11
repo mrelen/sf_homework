@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         UIButton.animate(withDuration: 0.5, delay: 0, options: [.repeat, .autoreverse], animations: {
             self.restartButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
         }, completion: nil)
-        // анимация кнопки (пульс, увеличивается-уменьшается)
+        // анимация кнопки (пульс, увеличивается-уменьшается), работает с ошибкой
         
         
         // Настройка вида фонового изображения. Изначально там были системные цвета, все как надо по условию, но я сделала по дефолту, чтобы это не отвлекало меня
@@ -202,7 +202,7 @@ class ViewController: UIViewController {
                     let increasedOrigin = CGPoint(x: circle.center.x - constrainedSize.width / 2, y: circle.center.y - constrainedSize.height / 2)
                     let increasedFrame = CGRect(origin: increasedOrigin, size: constrainedSize)
                     
-                    // Adjust the frame and corner radius of the merged circle
+                    // регулируем рамку и угловой радиус объединенного круга
                     circle.frame = increasedFrame
                     circle.layer.cornerRadius = constrainedSize.width / 2
                 } completion: { _ in
