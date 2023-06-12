@@ -8,7 +8,7 @@
 
 
 import UIKit
-import AVFoundation
+import AVFoundation // музыка
 
 // я установила только портретную ориентацию
 class ViewController: UIViewController {
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var music: UIButton!
     
     var circles: [UIView] = [] // массив для хранения представлений шариков
-    var audioPlayer: AVAudioPlayer?
+    var audioPlayer: AVAudioPlayer? // плеер (кнопка сверху в правом углу экрана)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         
 
 
-        restartButton.isHidden = true // кнопка скрыта
+        restartButton.isHidden = true // кнопка по дефолту скрыта
         
         restartButton.layer.cornerRadius = 30
         // скругление углов кнопки
@@ -56,6 +56,7 @@ class ViewController: UIViewController {
             self.restartButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
         }, completion: nil)
         // анимация кнопки (пульс, увеличивается-уменьшается), работает с ошибкой
+        
         
         
         // Настройка вида фонового изображения. Изначально там были системные цвета, все как надо по условию, но я сделала по дефолту, чтобы это не отвлекало меня
@@ -158,8 +159,10 @@ class ViewController: UIViewController {
             circle.addGestureRecognizer(panGestureRecognizer)
         }
         
-        audioPlayer?.play()
+        audioPlayer?.play() //воспроизводим музыку из new group assets
     }
+    
+    
     
     @IBAction func restartButtonTapped(_ sender: UIButton) {
         // сброс состояния кругов
@@ -176,15 +179,16 @@ class ViewController: UIViewController {
         // снова скрываем кнопку перезагрузки
         restartButton.isHidden = true
     }
+   
     
- 
+ // музыка включается сразу и ее можно остановить кнопкой в правом углу экрана
     @IBAction func toggleMusic(_ sender: UIButton) {
            if audioPlayer?.isPlaying == true {
                audioPlayer?.pause()
-               music.setTitle("🔕", for: .normal)
+               music.setTitle("🔕", for: .normal) // стоп
            } else {
                audioPlayer?.play()
-               music.setTitle("🔔", for: .normal)
+               music.setTitle("🔔", for: .normal) // плэй
            }
        }
   
@@ -209,7 +213,10 @@ class ViewController: UIViewController {
         }
     }
     
-    func checkForOverlap(_ circle: UIView) { // перекрытие
+    
+    
+    // перекрытие шариков (если убрать весь дизайн, тогда разноцветные шарики будут становиться цвета системного индиго при слиянии друг с другом)
+    func checkForOverlap(_ circle: UIView) {
         for otherCircle in circles {
             if otherCircle != circle && circle.frame.intersects(otherCircle.frame) {
                 // Объедините шариков в один
@@ -247,8 +254,8 @@ class ViewController: UIViewController {
                         animation.isRemovedOnCompletion = false
                         circle.layer.add(animation, forKey: "changeOpacity")
                         
-                       
-                        self.circles.removeLast() //удаление последнего из области видимости
+                        //удаление последнего из области видимости
+                        self.circles.removeLast()
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             self.restartButton.isHidden = false
