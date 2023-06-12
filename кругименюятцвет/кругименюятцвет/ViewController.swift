@@ -1,15 +1,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var circles: [UIView] = [] // массив для хранения представлений круга
-
+    var circles: [UIView] = []
+    
+    @IBOutlet weak var restartButton: UIButton! // Outlet for the restart button
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        //размер круга
+        
+        
+        
+        // Set up the initial circles
+        setupCircles()
+    }
+    
+    func setupCircles() {
         let circleSize: CGFloat = 80
-        // цвета
         let circleColors: [UIColor] = [.red, .green, .blue, .yellow, .orange]
+        
         
         // Цикл для создания и настройки каждого вида круга
         for i in 0..<5 { // рандомные позиции 5 кругов на экране
@@ -99,4 +107,18 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func restartButtonTapped(_ sender: UIButton) {
+        // Remove existing circles from the view
+        for circle in circles {
+            circle.removeFromSuperview()
+        }
+        
+        // Clear the circles array
+        circles.removeAll()
+        
+        // Set up the circles again
+        setupCircles()
+    }
 }
+
