@@ -181,10 +181,10 @@ class ViewController: UIViewController {
     @IBAction func toggleMusic(_ sender: UIButton) {
            if audioPlayer?.isPlaying == true {
                audioPlayer?.pause()
-               music.setTitle("Stop", for: .normal)
+               music.setTitle("🔕", for: .normal)
            } else {
                audioPlayer?.play()
-               music.setTitle("Play", for: .normal)
+               music.setTitle("🔔", for: .normal)
            }
        }
   
