@@ -5,7 +5,10 @@
 //  Created by OneClick on 4/6/23.
 //
 
+
+
 import UIKit
+import AVFoundation
 
 // я установила только портретную ориентацию
 class ViewController: UIViewController {
@@ -17,12 +20,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var circle4: UIView!
     @IBOutlet weak var circle5: UIView!
     @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var music: UIButton!
     
     var circles: [UIView] = [] // массив для хранения представлений шариков
+    var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        if let audioPath = Bundle.main.path(forResource: "Color Clownies - Circus (320 kbps)", ofType: "mp3") {
+                   let audioURL = URL(fileURLWithPath: audioPath)
+                   audioPlayer = try? AVAudioPlayer(contentsOf: audioURL)
+               }
+        
+
+
         restartButton.isHidden = true // кнопка скрыта
         
         restartButton.layer.cornerRadius = 30
@@ -144,6 +157,8 @@ class ViewController: UIViewController {
             let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
             circle.addGestureRecognizer(panGestureRecognizer)
         }
+        
+        audioPlayer?.play()
     }
     
     @IBAction func restartButtonTapped(_ sender: UIButton) {
@@ -161,6 +176,18 @@ class ViewController: UIViewController {
         // снова скрываем кнопку перезагрузки
         restartButton.isHidden = true
     }
+    
+ 
+    @IBAction func toggleMusic(_ sender: UIButton) {
+           if audioPlayer?.isPlaying == true {
+               audioPlayer?.pause()
+               music.setTitle("Stop", for: .normal)
+           } else {
+               audioPlayer?.play()
+               music.setTitle("Play", for: .normal)
+           }
+       }
+  
 
     
     // проверка того, пересекается ли шарик с какими-либо другими шариками, и функция отвечает за выполнение необходимых действий. Здесь мне помог chatgpt. Он добавил анимацию по заданым условиям, я хотела, чтобы шарик обьединялись и новый шарик увеличивался на 2%, а его максимальный размер был 360х360

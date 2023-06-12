@@ -72,12 +72,26 @@
                                     <action selector="restartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cxC-il-Fdc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GP5-p9-d6x" userLabel="Music">
+                                <rect key="frame" x="302" y="59" width="75" height="55.666666666666657"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="♫">
+                                    <fontDescription key="titleFontDescription" name="Impact" family="Impact" pointSize="34"/>
+                                    <color key="baseForegroundColor" red="0.0092954986959999999" green="0.080491922369999996" blue="0.76942896839999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="toggleMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N0c-Tn-oSm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <constraints>
                             <constraint firstItem="h0h-Ud-7yn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="350" id="JSI-R9-Lu4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GP5-p9-d6x" secondAttribute="trailing" constant="16" id="QHf-d4-Z4Z"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="h0h-Ud-7yn" secondAttribute="trailing" constant="50" id="bbt-Fu-tIE"/>
+                            <constraint firstItem="GP5-p9-d6x" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gI5-3Y-XNx"/>
                             <constraint firstItem="h0h-Ud-7yn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="iJG-LW-dfB"/>
+                            <constraint firstItem="GP5-p9-d6x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="302" id="iOD-MS-gg5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -86,6 +100,7 @@
                         <outlet property="circle3" destination="EZR-By-60i" id="S4C-bk-3iX"/>
                         <outlet property="circle4" destination="lza-0f-ly3" id="zL8-XX-11Z"/>
                         <outlet property="circle5" destination="h2W-mv-saZ" id="7Ag-lB-7Qp"/>
+                        <outlet property="music" destination="GP5-p9-d6x" id="JUm-BR-fPj"/>
                         <outlet property="restartButton" destination="h0h-Ud-7yn" id="cLO-qf-TCA"/>
                     </connections>
                 </viewController>
