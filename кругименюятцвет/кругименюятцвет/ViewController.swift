@@ -5,27 +5,27 @@ class ViewController: UIViewController {
     var circles: [UIView] = []
     var audioPlayer: AVAudioPlayer?
     
-    @IBOutlet weak var restartButton: UIButton! // Outlet for the restart button
-    @IBOutlet weak var musicButton: UIButton!
+    @IBOutlet weak var restartButton: UIButton! // кнопка перезапуска
+    @IBOutlet weak var musicButton: UIButton! // кнопка плеера
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        // настраивает аудиоплеер на воспроизведение файла из new group assets
         if let audioPath = Bundle.main.path(forResource: "Color Clownies - Circus (320 kbps)", ofType: "mp3") {
                    let audioURL = URL(fileURLWithPath: audioPath)
                    audioPlayer = try? AVAudioPlayer(contentsOf: audioURL)
                }
         
-        
+        // фоновое изображение
         let backgroundImage = UIImage(named: "circus")
         let backgroundImageView = UIImageView(image: backgroundImage)
-        backgroundImageView.contentMode = .scaleAspectFill
-        backgroundImageView.frame = view.bounds
-        backgroundImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        backgroundImageView.contentMode = .scaleAspectFill // заполняем на весь экран
+        backgroundImageView.frame = view.bounds // рамки
+        backgroundImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // автоматически изменять размер изображения при изменении размера представления
         
         view.addSubview(backgroundImageView)
-        view.sendSubviewToBack(backgroundImageView)
+        view.sendSubviewToBack(backgroundImageView) //отправляем изображение в конец иерархии, чтобы оно был фоном
         
         
         
@@ -52,39 +52,47 @@ class ViewController: UIViewController {
         
         
         
-        // Set up the initial circles
+        // устанавливаем начальные круги
         setupCircles()
-        
+        // обрабатывает видимость и анимацию кнопки перезагрузки в зависимости от количества кругов, присутствующих на экране
         updateRestartButtonVisibility()
     }
     
+   // создание и настройка серии кругов на экране
     func setupCircles() {
         let circleSize: CGFloat = 80
         let circleImageNames: [String] = ["red_circle", "green_circle", "blue_circle", "yellow_circle", "orange_circle"]
         
+        // перебор и создание рандомных кругов, задается рамка
         for i in 0..<5 {
             let circle = UIImageView(frame: CGRect(x: randomXPosition(),
                                                    y: randomYPosition(),
                                                    width: circleSize,
                                                    height: circleSize))
             
+            // присваивает соответствующее изображение из массива circleImageNames свойству image круга
             circle.image = UIImage(named: circleImageNames[i])
+            //устанавливает режим содержимого круга на .scaleAspectFill, который определяет, как масштабируется изображение круга, чтобы оно соответствовало его рамке
             circle.contentMode = .scaleAspectFill
             
-            view.addSubview(circle)
-            circles.append(circle)
+            view.addSubview(circle) // добавляет круг в качестве подвида к основному виду
+            circles.append(circle) // добавляет круг в массив circles, который отслеживает все созданные круги
             
+            // позволяет перетаскивать и перемещать круги
             let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
             circle.addGestureRecognizer(panGestureRecognizer)
             
+            // устанавливает свойство круга isUserInteractionEnabled в значение true, разрешая взаимодействие с пользователем в круге
             circle.isUserInteractionEnabled = true
+            // устанавливает угловой радиус слоя, чтобы он выглядел как круг
             circle.layer.cornerRadius = circleSize / 2
-            circle.clipsToBounds = true // Clip the content outside the circle bounds
+            circle.clipsToBounds = true // обрезаем содержимое за пределами круга
             
+            // устанавливает фильтр минимизации и увеличения слоя круга на «трилинейный»
             circle.layer.minificationFilter = .trilinear
             circle.layer.magnificationFilter = .trilinear
         }
-        audioPlayer?.play()
+        audioPlayer?.play() // воспроизведения звука
     }
 
 
@@ -133,35 +141,35 @@ class ViewController: UIViewController {
     func checkForOverlap(_ circle: UIView) {
         for otherCircle in circles {
             if otherCircle != circle && circle.frame.intersects(otherCircle.frame) {
-                // Animate the merging of circles and change the color to violet
+                // Анимируем слияние кругов и меняем цвет
                 UIView.animate(withDuration: 0.3) {
                     otherCircle.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
                     otherCircle.alpha = 0
                 //   circle.backgroundColor = UIColor.systemIndigo
 
-                    // Increase size by 2%
+                    // увеличиваем размер на 2%
                     let increasedSize = CGSize(width: circle.bounds.width * 1.02, height: circle.bounds.height * 1.02)
                     
                     let maxWidth: CGFloat = 360
                     let maxHeight: CGFloat = 360
 
-                    // Constrain size to maxWidth and maxHeight
+                    // ограничение размера maxWidth и maxHeight
                     let constrainedSize = CGSize(width: min(increasedSize.width, maxWidth), height: min(increasedSize.height, maxHeight))
 
-                    // Calculate increased frame with centered origin
+                    // рассчитываем увеличенный кадр с центром в начале
                     let increasedOrigin = CGPoint(x: circle.center.x - constrainedSize.width / 2, y: circle.center.y - constrainedSize.height / 2)
                     let increasedFrame = CGRect(origin: increasedOrigin, size: constrainedSize)
 
-                    // Update frame and corner radius
+                    // обновить рамку и угловой радиус
                     circle.frame = increasedFrame
                     circle.layer.cornerRadius = constrainedSize.width / 2
                 } completion: { _ in
                     otherCircle.removeFromSuperview()
                     
-                    // Remove the eliminated circle from the circles array
+                    // удаляем исключенный круг из массива кругов
                     self.circles.removeAll { $0 == otherCircle }
                     
-                    // Check if there is only one circle remaining
+                    // проверяем, остался ли только один круг
                     self.updateRestartButtonVisibility()
                 }
             }
@@ -169,14 +177,14 @@ class ViewController: UIViewController {
     }
     
     
-    // Function to update the visibility of the restart button
+    // функция для обновления видимости кнопки перезапуска
     func updateRestartButtonVisibility() {
         if circles.count == 1 {
             let lastCircle = circles[0]
             
             if lastCircle.alpha == 1 {
-                // Animate the last circle's opacity to 0
-                UIView.animate(withDuration: 2, animations: {
+                // анимируем непрозрачность последнего круга до 0
+                UIView.animate(withDuration: 2.5, animations: {
                     lastCircle.alpha = 0
                 }) { _ in
                     self.removeLastCircle()
@@ -186,7 +194,7 @@ class ViewController: UIViewController {
         
         restartButton.isHidden = circles.count != 1
         
-        // Restart the button pulsing animation if the button is visible
+        // перезапустить анимацию пульсации кнопки, если кнопка видна
         if !restartButton.isHidden {
             startPulseAnimation()
         } else {
@@ -194,7 +202,7 @@ class ViewController: UIViewController {
         }
     }
 
-    // Function to remove the last circle from the view and the circles array
+    // функция для удаления последнего круга из представления и массива кругов
     func removeLastCircle() {
         if let lastCircle = circles.last {
             lastCircle.removeFromSuperview()
@@ -203,7 +211,7 @@ class ViewController: UIViewController {
     }
 
     
-    // Function to start the pulsing animation on the restart button
+    // запуск пульсирующей анимации на кнопке перезагрузки
     func startPulseAnimation() {
         let pulseAnimation = CABasicAnimation(keyPath: "transform.scale")
         pulseAnimation.duration = 0.5
@@ -229,15 +237,15 @@ class ViewController: UIViewController {
     
     
     @IBAction func restartButtonTapped(_ sender: UIButton) {
-        // Remove existing circles from the view
+        // удалить существующие круги из представления
         for circle in circles {
             circle.removeFromSuperview()
         }
         
-        // Clear the circles array
+        // очистить массив кругов
         circles.removeAll()
         
-        // Set up the circles again
+        // снова устанавливаем круги
         setupCircles()
     }
 }
