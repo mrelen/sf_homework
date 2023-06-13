@@ -4,9 +4,12 @@ import AVFoundation
 class ViewController: UIViewController {
     var circles: [UIView] = []
     var audioPlayer: AVAudioPlayer?
+    var isConfettiEnabled = false
+    var confettiViews: [UIView] = []
     
     @IBOutlet weak var restartButton: UIButton! // кнопка перезапуска
     @IBOutlet weak var musicButton: UIButton! // кнопка плеера
+    @IBOutlet weak var confettiButton: UIButton! // кнопка конфетти
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -235,6 +238,51 @@ class ViewController: UIViewController {
               }
           }
     
+    @IBAction func toggleConfetti (_ sender: UIButton) {
+        isConfettiEnabled = !isConfettiEnabled
+        
+        if isConfettiEnabled {
+            confettiButton.setTitle("🎉", for: .normal)
+            dropConfetti(amount: 10)
+        } else {
+            confettiButton.setTitle("🎉", for: .normal)
+        }
+    }
+    
+    func dropConfetti(amount: Int) {
+        guard isConfettiEnabled else { return }
+        
+        let screenBounds = UIScreen.main.bounds
+        for _ in 1...amount {
+            let confettiView = UIView(frame: CGRect(x: CGFloat.random(in: 0...screenBounds.width),
+                                                    y: CGFloat.random(in: 0...screenBounds.height),
+                                                    width: 10,
+                                                    height: 10))
+            confettiView.backgroundColor = UIColor.random()
+            confettiView.layer.cornerRadius = 5
+            view.addSubview(confettiView)
+            confettiViews.append(confettiView)
+            
+            let animationDuration: TimeInterval = Double.random(in: 1...3)
+            let randomX = CGFloat.random(in: 0...screenBounds.width)
+            let randomY = CGFloat.random(in: 0...screenBounds.height)
+            let endPoint = CGPoint(x: randomX, y: screenBounds.height + 50 + randomY)
+            
+            UIView.animate(withDuration: animationDuration, delay: 0, options: .curveLinear, animations: {
+                confettiView.frame.origin = endPoint
+            }) { (_) in
+                confettiView.removeFromSuperview()
+                if let index = self.confettiViews.firstIndex(of: confettiView) {
+                    self.confettiViews.remove(at: index)
+                }
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.dropConfetti(amount: amount)
+        }
+    }
+    
     
     @IBAction func restartButtonTapped(_ sender: UIButton) {
         // удалить существующие круги из представления
@@ -249,4 +297,14 @@ class ViewController: UIViewController {
         setupCircles()
     }
 }
+
+
+extension UIColor {
+    static func random() -> UIColor {
+        let colors: [UIColor] = [.red, .green, .blue, .yellow, .orange, .purple, .cyan, .magenta]
+        let randomIndex = Int.random(in: 0..<colors.count)
+        return colors[randomIndex]
+    }
+}
+
 
