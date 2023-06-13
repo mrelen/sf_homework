@@ -52,9 +52,10 @@ class ViewController: UIViewController {
         // цвет обводки
         restartButton.layer.borderWidth = 2
         // ширина линии обводки
-        UIButton.animate(withDuration: 0.5, delay: 0, options: [.repeat, .autoreverse], animations: {
-            self.restartButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-        }, completion: nil)
+        startPulseAnimation()
+  //      UIButton.animate(withDuration: 0.5, delay: 0, options: [.repeat, .autoreverse], animations: {
+    //        self.restartButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+  //      }, completion: nil)
         // анимация кнопки (пульс, увеличивается-уменьшается), работает с ошибкой
         
         
@@ -68,7 +69,6 @@ class ViewController: UIViewController {
         
         view.addSubview(backgroundImageView)
         view.sendSubviewToBack(backgroundImageView)
-        
         
         
         // Настройка представления изображения для каждого круга
@@ -146,6 +146,8 @@ class ViewController: UIViewController {
         // создаем массив с именем «circles» и присваивает ему вьюшки «circle1...4». Эти экземпляры соединены как аутлеты на сториборде.
         circles = [circle1, circle2, circle3, circle4, circle5]
         
+        
+        
         //изначально я пользовалась этими цветами, пока не загрузила изображения
         let circleColors: [UIColor] = [.red, .green, .blue, .yellow, .orange]
         
@@ -198,6 +200,9 @@ class ViewController: UIViewController {
     
     //перемещение по Х и У
     @objc func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
+        
+        view.bringSubviewToFront(restartButton)
+        
         guard let circle = gestureRecognizer.view else { return }
         
         switch gestureRecognizer.state {
@@ -213,6 +218,26 @@ class ViewController: UIViewController {
         }
     }
     
+    // Function to update the visibility of the restart button
+    func updateRestartButtonVisibility() {
+        restartButton.isHidden = circles.count != 1
+        
+        // Restart the button pulsing animation if the button is visible
+        if !restartButton.isHidden {
+            startPulseAnimation()
+        }
+    }
+    
+    // Function to start the pulsing animation on the restart button
+    func startPulseAnimation() {
+        let pulseAnimation = CABasicAnimation(keyPath: "transform.scale")
+        pulseAnimation.duration = 0.5
+        pulseAnimation.fromValue = 1.0
+        pulseAnimation.toValue = 1.05
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = .infinity
+        restartButton.layer.add(pulseAnimation, forKey: "pulseAnimation")
+    }
     
     
     // перекрытие шариков (если убрать весь дизайн, тогда разноцветные шарики будут становиться цвета системного индиго при слиянии друг с другом)
@@ -223,10 +248,12 @@ class ViewController: UIViewController {
                 UIView.animate(withDuration: 0.3) {
                     otherCircle.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
                     otherCircle.alpha = 0
-                    circle.backgroundColor = UIColor.systemIndigo
+              //      circle.backgroundColor = UIColor.systemIndigo
                     
                     // Увеличение объединенного круга на 2%
                     let increasedSize = CGSize(width: circle.bounds.width * 1.02, height: circle.bounds.height * 1.02)
+          
+
                     
                     // Проверка, превышает ли увеличенный размер максимальное ограничение размера
                     let maxWidth: CGFloat = 360

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CEA18F052A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CEA18F042A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 */; };
 		CED7F0B92A3575F3003DB4FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */; };
 		CED7F0BB2A3575F3003DB4FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0BA2A3575F3003DB4FB /* SceneDelegate.swift */; };
 		CED7F0BD2A3575F3003DB4FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0BC2A3575F3003DB4FB /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CEA18F042A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Color Clownies - Circus (320 kbps).mp3"; path = "../../../TEST/цирк/Color Clownies - Circus (320 kbps).mp3"; sourceTree = "<group>"; };
 		CED7F0B52A3575F3003DB4FB /* кругименюятцвет.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "кругименюятцвет.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CED7F0BA2A3575F3003DB4FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,9 +39,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CEA18F032A3802D1005EB4D5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				CEA18F042A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		CED7F0AC2A3575F3003DB4FB = {
 			isa = PBXGroup;
 			children = (
+				CEA18F032A3802D1005EB4D5 /* Assets */,
 				CED7F0B72A3575F3003DB4FB /* кругименюятцвет */,
 				CED7F0B62A3575F3003DB4FB /* Products */,
 			);
@@ -128,6 +139,7 @@
 				CED7F0C52A3575F4003DB4FB /* LaunchScreen.storyboard in Resources */,
 				CED7F0C22A3575F4003DB4FB /* Assets.xcassets in Resources */,
 				CED7F0C02A3575F3003DB4FB /* Main.storyboard in Resources */,
+				CEA18F052A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
