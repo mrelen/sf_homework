@@ -7,18 +7,25 @@ class ViewController: UIViewController {
     var isConfettiEnabled = false
     var confettiViews: [UIView] = []
     
-    @IBOutlet weak var restartButton: UIButton! // кнопка перезапуска
-    @IBOutlet weak var musicButton: UIButton! // кнопка плеера
+    @IBOutlet weak var restartButton: UIButton! // кнопка перезапуска (размер выравнять)
+    @IBOutlet weak var musicButton: UIButton! // кнопка плеера (создать цикл)
     @IBOutlet weak var confettiButton: UIButton! // кнопка конфетти
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // настраивает аудиоплеер на воспроизведение файла из new group assets
+        // настраивает аудиоплеер на воспроизведение файла из new group assets, музыка в цикле
         if let audioPath = Bundle.main.path(forResource: "Color Clownies - Circus (320 kbps)", ofType: "mp3") {
-                   let audioURL = URL(fileURLWithPath: audioPath)
-                   audioPlayer = try? AVAudioPlayer(contentsOf: audioURL)
+               let audioURL = URL(fileURLWithPath: audioPath)
+               
+               do {
+                   audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
+                   audioPlayer?.numberOfLoops = -1 // количество циклов = -1 для бесконечного цикла
+                   audioPlayer?.prepareToPlay()
+               } catch {
+                   print("Не удалось инициализировать аудиоплеер: \(error)")
                }
+           }
         
         // фоновое изображение
         let backgroundImage = UIImage(named: "circus")
@@ -29,7 +36,7 @@ class ViewController: UIViewController {
         
         view.addSubview(backgroundImageView)
         view.sendSubviewToBack(backgroundImageView) //отправляем изображение в конец иерархии, чтобы оно был фоном
-        
+       
         
         
         restartButton.isHidden = true
@@ -60,6 +67,11 @@ class ViewController: UIViewController {
         // обрабатывает видимость и анимацию кнопки перезагрузки в зависимости от количества кругов, присутствующих на экране
         updateRestartButtonVisibility()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        audioPlayer?.play() // воспроизведения звука
+    }
+    
     
    // создание и настройка серии кругов на экране
     func setupCircles() {
@@ -95,7 +107,7 @@ class ViewController: UIViewController {
             circle.layer.minificationFilter = .trilinear
             circle.layer.magnificationFilter = .trilinear
         }
-        audioPlayer?.play() // воспроизведения звука
+        
     }
 
 
@@ -122,6 +134,9 @@ class ViewController: UIViewController {
     @objc func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
         
         view.bringSubviewToFront(restartButton)
+        view.bringSubviewToFront(musicButton)
+        view.bringSubviewToFront(confettiButton)
+        
 
         guard let circle = gestureRecognizer.view else { return }
         
