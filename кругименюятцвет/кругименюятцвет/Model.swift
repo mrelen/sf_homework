@@ -59,10 +59,61 @@ class Circle {
     }
     
     func updateRestartButtonVisibility() {
-        // Update the visibility of the restart button based on the circles
+   
     }
     
-    // Other circle-related properties and methods
+
 }
 
-*/
+
+
+import UIKit
+import AVFoundation
+
+class Item {
+    var circles: [UIView] = []
+    var audioPlayer: AVAudioPlayer?
+    var isConfettiEnabled = false
+    var confettiViews: [UIView] = []
+}
+
+class Model {
+    @IBOutlet weak var restartButton: UIButton! // кнопка перезапуска (размер выравнять)
+    @IBOutlet weak var musicButton: UIButton! // кнопка плеера (создать цикл)
+    @IBOutlet weak var confettiButton: UIButton! // кнопка конфетти
+    
+    // создание и настройка серии кругов на экране
+     func setupCircles() {
+         let circleSize: CGFloat = 80
+         let circleImageNames: [String] = ["red_circle", "green_circle", "blue_circle", "yellow_circle", "orange_circle"]
+         
+         // перебор и создание рандомных кругов, задается рамка
+         for i in 0..<5 {
+             let circle = UIImageView(frame: CGRect(x: randomXPosition(),
+                                                    y: randomYPosition(),
+                                                    width: circleSize,
+                                                    height: circleSize))
+             
+             // присваивает соответствующее изображение из массива circleImageNames свойству image круга
+             circle.image = UIImage(named: circleImageNames[i])
+             //устанавливает режим содержимого круга на .scaleAspectFill, который определяет, как масштабируется изображение круга, чтобы оно соответствовало его рамке
+             circle.contentMode = .scaleAspectFill
+   
+             
+             // рандомная позиция по Х
+             func randomXPosition() -> CGFloat {
+                 let viewWidth = view.bounds.width
+                 let circleSize: CGFloat = 80
+                 let randomX = CGFloat.random(in: circleSize...(viewWidth - circleSize))
+                 return randomX
+             }
+             
+             // рандомная позиция по У
+             func randomYPosition() -> CGFloat {
+                 let viewHeight = view.bounds.height
+                 let circleSize: CGFloat = 80
+                 let randomY = CGFloat.random(in: circleSize...(viewHeight - circleSize))
+                 return randomY
+             }
+}
+ */

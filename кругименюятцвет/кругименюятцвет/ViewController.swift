@@ -56,9 +56,6 @@ class ViewController: UIViewController {
         restartButton.layer.borderWidth = 2
         // ширина линии обводки
         startPulseAnimation()
-  //     UIButton.animate(withDuration: 0.5, delay: 0, options: [.repeat, .autoreverse], animations: {
-   //        self.restartButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-    //  }, completion: nil)
         
         
         

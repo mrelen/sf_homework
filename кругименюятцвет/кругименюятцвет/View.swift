@@ -96,4 +96,55 @@ class ViewController: UIViewController {
         
     }
 }
-*/
+
+
+import UIKit
+import AVFoundation 
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    // настраивает аудиоплеер на воспроизведение файла из new group assets, музыка в цикле
+    if let audioPath = Bundle.main.path(forResource: "Color Clownies - Circus (320 kbps)", ofType: "mp3") {
+           let audioURL = URL(fileURLWithPath: audioPath)
+           
+           do {
+               audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
+               audioPlayer?.numberOfLoops = -1 // количество циклов = -1 для бесконечного цикла
+               audioPlayer?.prepareToPlay()
+           } catch {
+               print("Не удалось инициализировать аудиоплеер: \(error)")
+           }
+       }
+    
+    // фоновое изображение
+    let backgroundImage = UIImage(named: "circus")
+    let backgroundImageView = UIImageView(image: backgroundImage)
+    backgroundImageView.contentMode = .scaleAspectFill // заполняем на весь экран
+    backgroundImageView.frame = view.bounds // рамки
+    backgroundImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // автоматически изменять размер изображения при изменении размера представления
+    
+    view.addSubview(backgroundImageView)
+    view.sendSubviewToBack(backgroundImageView) //отправляем изображение в конец иерархии, чтобы оно был фоном
+   
+    
+    
+    restartButton.isHidden = true
+    
+    restartButton.layer.cornerRadius = 30
+    // скругление углов кнопки
+       restartButton.layer.shadowColor = UIColor.black.cgColor
+    // черный цвет тени
+       restartButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+    // смещение тени от кнопки
+       restartButton.layer.shadowRadius = 10
+    // радиусом размытия тени
+    restartButton.layer.shadowOpacity = 0.5
+    // регулирует прозрачность тени
+    restartButton.layer.borderColor = UIColor.systemGreen.cgColor
+    // цвет обводки
+    restartButton.layer.borderWidth = 2
+    // ширина линии обводки
+    startPulseAnimation()
+    
+ */
