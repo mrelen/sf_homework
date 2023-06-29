@@ -5,24 +5,20 @@
 //  Created by OneClick on 29/6/23.
 //
 
-
 import UIKit
 
 class ToDoListViewController: UIViewController {
    
     @IBOutlet weak var tableView: UITableView!
     
-    
     var todos: [ToDo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         tableView.delegate = self
         tableView.dataSource = self
         
-
         todos = [
             ToDo(title: "Купить продукты", completed: false),
             ToDo(title: "Написать MVC проект", completed: true),
@@ -52,9 +48,16 @@ extension ToDoListViewController: UITableViewDataSource {
 
 extension ToDoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedToDo = todos[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
         
-       
+        var selectedToDo = todos[indexPath.row]
+        selectedToDo.completed.toggle() // Toggle the completion status
+        
+        todos[indexPath.row] = selectedToDo // Update the todo in the array
+        
+        tableView.reloadRows(at: [indexPath], with: .automatic) // Reload the selected row
+        
+        // Perform any additional action when a todo is selected
         print("Selected todo: \(selectedToDo.title)")
     }
 }
