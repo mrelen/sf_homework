@@ -9,6 +9,6 @@ import Foundation
 
 struct ToDo {
     let title: String
-    var completed: Bool // Change to a mutable property
+    var completed: Bool
 }
 
