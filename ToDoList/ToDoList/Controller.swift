@@ -22,7 +22,7 @@ class ToDoListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        // Populate some initial todos
+
         todos = [
             ToDo(title: "Купить продукты", completed: false),
             ToDo(title: "Написать MVC проект", completed: true),
@@ -54,7 +54,7 @@ extension ToDoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedToDo = todos[indexPath.row]
         
-        // Perform any action when a todo is selected
+       
         print("Selected todo: \(selectedToDo.title)")
     }
 }
