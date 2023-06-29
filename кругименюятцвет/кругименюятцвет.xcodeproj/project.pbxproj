@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE315D182A4D5C540099D2A1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315D172A4D5C540099D2A1 /* Model.swift */; };
+		CE315D1A2A4D5D510099D2A1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315D192A4D5D510099D2A1 /* View.swift */; };
 		CEA18F052A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CEA18F042A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 */; };
 		CED7F0B92A3575F3003DB4FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */; };
 		CED7F0BB2A3575F3003DB4FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0BA2A3575F3003DB4FB /* SceneDelegate.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE315D172A4D5C540099D2A1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		CE315D192A4D5D510099D2A1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CEA18F042A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Color Clownies - Circus (320 kbps).mp3"; path = "../../../TEST/цирк/Color Clownies - Circus (320 kbps).mp3"; sourceTree = "<group>"; };
 		CED7F0B52A3575F3003DB4FB /* кругименюятцвет.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "кругименюятцвет.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 				CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */,
 				CED7F0BA2A3575F3003DB4FB /* SceneDelegate.swift */,
 				CED7F0BC2A3575F3003DB4FB /* ViewController.swift */,
+				CE315D172A4D5C540099D2A1 /* Model.swift */,
+				CE315D192A4D5D510099D2A1 /* View.swift */,
 				CED7F0BE2A3575F3003DB4FB /* Main.storyboard */,
 				CED7F0C12A3575F4003DB4FB /* Assets.xcassets */,
 				CED7F0C32A3575F4003DB4FB /* LaunchScreen.storyboard */,
@@ -152,7 +158,9 @@
 			files = (
 				CED7F0BD2A3575F3003DB4FB /* ViewController.swift in Sources */,
 				CED7F0B92A3575F3003DB4FB /* AppDelegate.swift in Sources */,
+				CE315D1A2A4D5D510099D2A1 /* View.swift in Sources */,
 				CED7F0BB2A3575F3003DB4FB /* SceneDelegate.swift in Sources */,
+				CE315D182A4D5C540099D2A1 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

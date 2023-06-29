@@ -31,7 +31,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LSCircus" width="1980" height="1116"/>
+        <image name="LSCircus" width="660" height="372"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
