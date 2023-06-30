@@ -80,16 +80,33 @@ class ToDoListViewController: UIViewController {
 
      // корзина нажатие
     @objc private func deleteButtonTapped() {
-        // удалить все задачи
-        todos.removeAll()
+        
+        // показать уведомление о подтверждении
+        let confirmationAlert = UIAlertController(
+            title: "Удалить все задачи",
+            message: "Вы уверены, что хотите удалить все задачи?",
+            preferredStyle: .alert
+        )
+        
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
+        
+        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { [weak self] _ in
+            // удалить все задачи
+            self?.todos.removeAll()
 
-        // обновить вью
-        tableView.reloadData()
+            // обновить вью
+            self?.tableView.reloadData()
 
-        // вывести окно добавить задачу
-        if todos.isEmpty {
-            addButtonTapped()
+            // вывести окно "добавить задачу"
+            if self?.todos.isEmpty ?? false {
+                self?.addButtonTapped()
+            }
         }
+        
+        confirmationAlert.addAction(cancelAction)
+        confirmationAlert.addAction(deleteAction)
+        
+        present(confirmationAlert, animated: true, completion: nil)
     }
    }
 
