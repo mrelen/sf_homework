@@ -112,17 +112,19 @@ class ToDoListViewController: UIViewController {
 
    // MARK: - UITableViewDataSource
 
+// возвращает количество массива todos, показывая количество задач в таблице
    extension ToDoListViewController: UITableViewDataSource {
        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            return todos.count
        }
        
+       // извлечение и настройка ячейки для указанного пути индекса строки
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoTableViewCell", for: indexPath) as! ToDoTableViewCell
            
            let todo = todos[indexPath.row]
            cell.configure(with: todo)
-           
+           // возвращает настроенную ячейку для отображения в виде таблицы
            return cell
        }
    }
@@ -130,20 +132,23 @@ class ToDoListViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension ToDoListViewController: UITableViewDelegate {
+    //отменяет выбор выбранной строки
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         var selectedToDo = todos[indexPath.row]
-        selectedToDo.completed.toggle() // Переключить статус завершения
+        selectedToDo.completed.toggle() // переключает статус завершения задачи
         
-        todos[indexPath.row] = selectedToDo // Обновить задачу
+        todos[indexPath.row] = selectedToDo // обновить задачу
         
-        tableView.reloadRows(at: [indexPath], with: .automatic) // Перезагрузить строку
+        tableView.reloadRows(at: [indexPath], with: .automatic) // перезагрузить строку
         
-        print("Выбранные задачи: \(selectedToDo.title)")
+        print("Выбранные задачи: \(selectedToDo.title)") // выводит действия в консоль
     }
     
+    // редактирование строки (когда пользователь проводит пальцем, чтобы удалить ее)
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      // проверяет, является ли стиль редактирования «.delete»
         if editingStyle == .delete {
             todos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
