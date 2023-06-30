@@ -44,7 +44,7 @@ class ToDoListViewController: UIViewController {
            navigationItem.leftBarButtonItem = deleteButton
        }
      
-    // + нажатие
+    // нажатие кнопки +
     @objc private func addButtonTapped() {
         let alertController = UIAlertController(title: "Добавить задачу", message: nil, preferredStyle: .alert)
         
