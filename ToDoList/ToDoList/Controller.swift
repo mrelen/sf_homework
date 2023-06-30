@@ -78,7 +78,7 @@ class ToDoListViewController: UIViewController {
 
 
 
-     // корзина нажатие
+     // корзина нажатие (удалить одну задачу можно при свайпе влево)
     @objc private func deleteButtonTapped() {
         
         // показать уведомление о подтверждении
