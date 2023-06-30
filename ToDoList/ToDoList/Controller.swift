@@ -80,11 +80,16 @@ class ToDoListViewController: UIViewController {
 
      // корзина нажатие
     @objc private func deleteButtonTapped() {
-        // Удалить все задачи
+        // удалить все задачи
         todos.removeAll()
 
-        // Обновить вью таблицы
+        // обновить вью
         tableView.reloadData()
+
+        // вывести окно добавить задачу
+        if todos.isEmpty {
+            addButtonTapped()
+        }
     }
    }
 
