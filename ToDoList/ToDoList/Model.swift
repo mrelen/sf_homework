@@ -8,7 +8,11 @@
 import Foundation
 
 struct ToDo {
-    let title: String
+    var title: String
     var completed: Bool
 }
+
+
+
+
 

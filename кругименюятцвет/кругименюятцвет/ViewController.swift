@@ -2,7 +2,7 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-    var circles: [UIView] = []
+    var circles: [UIView] = []   // закрыть протоколом
     var audioPlayer: AVAudioPlayer?
     var isConfettiEnabled = false
     var confettiViews: [UIView] = []
