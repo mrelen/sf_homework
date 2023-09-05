@@ -91,7 +91,6 @@ class ViewController: UIViewController {
         let sliderValue = slider.value
         defaults.set(sliderValue > 0.5, forKey: "sliderState")
         defaults.set(isDarkMode, forKey: "darkMode")
-        defaults.synchronize()
     }
 
     func loadSettings() {

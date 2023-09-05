@@ -18,6 +18,7 @@ class ToDoListViewController: UIViewController, UITableViewDragDelegate, UITable
     }
     
     var todos: [ToDo] = []
+    var managedContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,13 +61,22 @@ class ToDoListViewController: UIViewController, UITableViewDragDelegate, UITable
         let addAction = UIAlertAction(title: "Добавить", style: .default) { [weak self] _ in
             guard let textField = alertController.textFields?.first,
                   let taskTitle = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-                  !taskTitle.isEmpty else {
+                  !taskTitle.isEmpty,
+                  let managedContext = self?.managedContext else {
                 return
             }
             
-            let newTask = ToDo(title: taskTitle, completed: false)
-            self?.todos.append(newTask)
-            self?.tableView.reloadData()
+            let newToDoItem = ToDoItem(context: managedContext)
+            newToDoItem.title = taskTitle
+            newToDoItem.completed = false
+            
+            do {
+                try managedContext.save()
+                self?.fetchToDos() // Refresh the todos array after saving
+                self?.tableView.reloadData()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
@@ -78,6 +88,7 @@ class ToDoListViewController: UIViewController, UITableViewDragDelegate, UITable
             alertController.textFields?.first?.becomeFirstResponder()
         }
     }
+
     
     @objc private func deleteButtonTapped() {
         if todos.isEmpty {
@@ -261,8 +272,8 @@ extension ToDoListViewController: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell
         cell?.configure(with: selectedToDo)
         tableView.reloadRows(at: [indexPath], with: .automatic) // перезагрузить строку
-            
-            print("Выбранные задачи: \(selectedToDo.title)") // выводит действия в консоль
+        
+        print("Выбранные задачи: \(selectedToDo.title)") // выводит действия в консоль
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

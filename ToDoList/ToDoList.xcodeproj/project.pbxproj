@@ -15,6 +15,9 @@
 		CE315D5C2A4E13C70099D2A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE315D5A2A4E13C70099D2A1 /* LaunchScreen.storyboard */; };
 		CE315D642A4E14020099D2A1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315D632A4E14020099D2A1 /* Model.swift */; };
 		CE315D662A4E14150099D2A1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315D652A4E14150099D2A1 /* View.swift */; };
+		CEB9F8132A9DA9AD00BB3D47 /* ToDoListCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEB9F8112A9DA9AD00BB3D47 /* ToDoListCoreData.xcdatamodeld */; };
+		CEB9F8162A9DABA300BB3D47 /* ToDoItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9F8142A9DABA300BB3D47 /* ToDoItem+CoreDataClass.swift */; };
+		CEB9F8172A9DABA300BB3D47 /* ToDoItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9F8152A9DABA300BB3D47 /* ToDoItem+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		CE315D5D2A4E13C70099D2A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE315D632A4E14020099D2A1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CE315D652A4E14150099D2A1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		CEB9F8122A9DA9AD00BB3D47 /* ToDoListCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoListCoreData.xcdatamodel; sourceTree = "<group>"; };
+		CEB9F8142A9DABA300BB3D47 /* ToDoItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CEB9F8152A9DABA300BB3D47 /* ToDoItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +50,8 @@
 		CE315D432A4E13C60099D2A1 = {
 			isa = PBXGroup;
 			children = (
+				CEB9F8142A9DABA300BB3D47 /* ToDoItem+CoreDataClass.swift */,
+				CEB9F8152A9DABA300BB3D47 /* ToDoItem+CoreDataProperties.swift */,
 				CE315D4E2A4E13C60099D2A1 /* ToDoList */,
 				CE315D4D2A4E13C60099D2A1 /* Products */,
 			);
@@ -69,6 +77,7 @@
 				CE315D582A4E13C70099D2A1 /* Assets.xcassets */,
 				CE315D5A2A4E13C70099D2A1 /* LaunchScreen.storyboard */,
 				CE315D5D2A4E13C70099D2A1 /* Info.plist */,
+				CEB9F8112A9DA9AD00BB3D47 /* ToDoListCoreData.xcdatamodeld */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -145,7 +154,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE315D542A4E13C60099D2A1 /* ViewController.swift in Sources */,
+				CEB9F8162A9DABA300BB3D47 /* ToDoItem+CoreDataClass.swift in Sources */,
 				CE315D502A4E13C60099D2A1 /* AppDelegate.swift in Sources */,
+				CEB9F8132A9DA9AD00BB3D47 /* ToDoListCoreData.xcdatamodeld in Sources */,
+				CEB9F8172A9DABA300BB3D47 /* ToDoItem+CoreDataProperties.swift in Sources */,
 				CE315D662A4E14150099D2A1 /* View.swift in Sources */,
 				CE315D522A4E13C60099D2A1 /* SceneDelegate.swift in Sources */,
 				CE315D642A4E14020099D2A1 /* Model.swift in Sources */,
@@ -366,6 +378,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CEB9F8112A9DA9AD00BB3D47 /* ToDoListCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CEB9F8122A9DA9AD00BB3D47 /* ToDoListCoreData.xcdatamodel */,
+			);
+			currentVersion = CEB9F8122A9DA9AD00BB3D47 /* ToDoListCoreData.xcdatamodel */;
+			path = ToDoListCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CE315D442A4E13C60099D2A1 /* Project object */;
 }

@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import CoreData
 
-struct ToDo {
-    var title: String
-    var completed: Bool
+@objc(ToDoItem)
+class ToDoItem: NSManagedObject {
+    @NSManaged var title: String
+    @NSManaged var completed: Bool
 }
+
 
 
 

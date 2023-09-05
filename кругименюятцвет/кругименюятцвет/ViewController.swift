@@ -4,11 +4,14 @@ import AVFoundation
 class ViewController: UIViewController {
     var circles: [UIView] = []   // закрыть протоколом
     var audioPlayer: AVAudioPlayer?
+    var explosionAudioPlayer: AVAudioPlayer?
     var isConfettiEnabled = false
     var confettiViews: [UIView] = []
+    var pictureImageView: UIImageView!
+    var isPictureVisible = false
     
-    @IBOutlet weak var restartButton: UIButton! // кнопка перезапуска (размер выравнять)
-    @IBOutlet weak var musicButton: UIButton! // кнопка плеера (создать цикл)
+    @IBOutlet weak var restartButton: UIButton! // кнопка перезапуска
+    @IBOutlet weak var musicButton: UIButton! // кнопка плеера
     @IBOutlet weak var confettiButton: UIButton! // кнопка конфетти
     
     override func viewDidLoad() {
@@ -26,6 +29,19 @@ class ViewController: UIViewController {
                    print("Не удалось инициализировать аудиоплеер: \(error)")
                }
            }
+        
+        // звук лопающихся шариков
+        if let explosionAudioPath = Bundle.main.path(forResource: "circle_explosion", ofType: "mp3") {
+            let explosionAudioURL = URL(fileURLWithPath: explosionAudioPath)
+            
+            do {
+                explosionAudioPlayer = try AVAudioPlayer(contentsOf: explosionAudioURL)
+                explosionAudioPlayer?.prepareToPlay()
+            } catch {
+                print("Не удалось инициализировать аудиоплеер для circle_explosion: \(error)")
+            }
+        }
+
         
         // фоновое изображение
         let backgroundImage = UIImage(named: "circus")
@@ -58,17 +74,86 @@ class ViewController: UIViewController {
         startPulseAnimation()
         
         
-        
+        pictureImageView = UIImageView(frame: CGRect(x: 100, y: 100, width: 300, height: 300))
+                pictureImageView.image = UIImage(named: "picture")
+                pictureImageView.contentMode = .scaleAspectFit
+                view.addSubview(pictureImageView)
         // устанавливаем начальные круги
+      
         setupCircles()
         // обрабатывает видимость и анимацию кнопки перезагрузки в зависимости от количества кругов, присутствующих на экране
+        repositionPicture()
         updateRestartButtonVisibility()
+        updatePictureVisibility()
+        startBlinkingAnimation()
+        startAddingCircles()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         audioPlayer?.play() // воспроизведения звука
     }
     
+    
+    func startAddingCircles() {
+        var circleCount = 0
+        
+        // Create a timer to add circles one by one
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            if self.restartButton.isHidden && circleCount < 100 {
+                self.addCircle()
+                circleCount += 1
+            } else {
+                timer.invalidate() // Stop the timer after adding 100 circles or if the restart button is visible
+                self.showRestartButton()
+            }
+        }
+    }
+
+    
+    func showRestartButton() {
+        DispatchQueue.main.async {
+            self.restartButton.isHidden = false
+            self.updatePictureVisibility()
+        }
+    }
+
+
+    func addCircle() {
+        // Create and configure a new circle view
+        let circleSize: CGFloat = 80
+        let circleImageNames: [String] = ["red_circle", "green_circle", "blue_circle", "yellow_circle", "orange_circle"]
+
+        let circle = UIImageView(frame: CGRect(x: randomXPosition(),
+                                               y: randomYPosition(),
+                                               width: circleSize,
+                                               height: circleSize))
+
+        // Assign a random image from the array of circleImageNames
+        if let randomImageName = circleImageNames.randomElement() {
+            circle.image = UIImage(named: randomImageName)
+        }
+
+        circle.contentMode = .scaleAspectFill
+        view.addSubview(circle)
+        circles.append(circle)
+
+        // Add a pan gesture recognizer to enable dragging the circle
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        circle.addGestureRecognizer(panGestureRecognizer)
+        
+        // Enable user interaction for the circle view
+        circle.isUserInteractionEnabled = true
+        
+        // Set corner radius to make it look like a circle
+        circle.layer.cornerRadius = circleSize / 2
+        circle.clipsToBounds = true
+        
+        // Set minification and magnification filters for the circle's layer
+        circle.layer.minificationFilter = .trilinear
+        circle.layer.magnificationFilter = .trilinear
+    }
+
+
     
    // создание и настройка серии кругов на экране
     func setupCircles() {
@@ -111,7 +196,7 @@ class ViewController: UIViewController {
 
     
     
-    // рандомная позиция по Х
+    // рандомная позиция кругов по Х
     func randomXPosition() -> CGFloat {
         let viewWidth = view.bounds.width
         let circleSize: CGFloat = 80
@@ -119,7 +204,7 @@ class ViewController: UIViewController {
         return randomX
     }
     
-    // рандомная позиция по У
+    // рандомная позиция кругов по У
     func randomYPosition() -> CGFloat {
         let viewHeight = view.bounds.height
         let circleSize: CGFloat = 80
@@ -156,6 +241,8 @@ class ViewController: UIViewController {
     func checkForOverlap(_ circle: UIView) {
         for otherCircle in circles {
             if otherCircle != circle && circle.frame.intersects(otherCircle.frame) {
+               // звук лопающихся шариков
+                explosionAudioPlayer?.play()
                 // Анимируем слияние кругов и меняем цвет
                 UIView.animate(withDuration: 0.3) {
                     otherCircle.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
@@ -191,6 +278,21 @@ class ViewController: UIViewController {
         }
     }
     
+    // условие: салют запускается, когда видна кнопка рестарт
+    func updatePictureVisibility() {
+         pictureImageView.isHidden = restartButton.isHidden
+     }
+    
+    // анимация салюта
+    func startBlinkingAnimation() {
+        if !isPictureVisible {
+            isPictureVisible = true
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.autoreverse, .repeat], animations: {
+                self.pictureImageView.alpha = 0
+            }, completion: nil)
+        }
+    }
+    
     
     // функция для обновления видимости кнопки перезапуска
     func updateRestartButtonVisibility() {
@@ -215,6 +317,8 @@ class ViewController: UIViewController {
         } else {
             restartButton.layer.removeAllAnimations()
         }
+        // запускать салют, если кнопка видна
+        updatePictureVisibility()
     }
 
     // функция для удаления последнего круга из представления и массива кругов
@@ -236,8 +340,13 @@ class ViewController: UIViewController {
         pulseAnimation.repeatCount = .infinity
         restartButton.layer.add(pulseAnimation, forKey: "pulseAnimation")
     }
-
     
+    // рандомная позиция салюта
+    func repositionPicture() {
+        let randomX = CGFloat.random(in: 0...(view.bounds.width - pictureImageView.bounds.width))
+        let randomY = CGFloat.random(in: 0...(view.bounds.height - pictureImageView.bounds.height))
+        pictureImageView.frame.origin = CGPoint(x: randomX, y: randomY)
+    }
     
     // музыка включается сразу и ее можно остановить кнопкой в правом углу экрана
        @IBAction func toggleMusic(_ sender: UIButton) {
@@ -297,20 +406,35 @@ class ViewController: UIViewController {
     
     
     @IBAction func restartButtonTapped(_ sender: UIButton) {
-        // удалить существующие круги из представления
-        for circle in circles {
-            circle.removeFromSuperview()
+        // анимация исчезновения салюта (ошибка, не работает)
+        isPictureVisible = false
+
+        UIView.animate(withDuration: 0.5, animations: {
+    
+            self.pictureImageView.alpha = 0
+        }) { _ in
+            self.pictureImageView.alpha = 1
+            self.repositionPicture()
+            
+            // Удаляем существующие круги из вью
+            for circle in self.circles {
+                circle.removeFromSuperview()
+            }
+            // Очищаем массив кругов
+            self.circles.removeAll()
+            // Снова устанавливаем круги
+            self.setupCircles()
+            // Обновляем видимость кнопки перезапуска
+            self.updateRestartButtonVisibility()
+            // Снова запускаем анимацию мигания
+            self.startBlinkingAnimation()
+            // Снова запускаем создание кругов
+            self.startAddingCircles()
         }
-        
-        // очистить массив кругов
-        circles.removeAll()
-        
-        // снова устанавливаем круги
-        setupCircles()
     }
 }
 
-
+// цвета конфетти
 extension UIColor {
     static func random() -> UIColor {
         let colors: [UIColor] = [.red, .green, .blue, .yellow, .orange, .purple, .cyan, .magenta]
@@ -318,5 +442,3 @@ extension UIColor {
         return colors[randomIndex]
     }
 }
-
-
