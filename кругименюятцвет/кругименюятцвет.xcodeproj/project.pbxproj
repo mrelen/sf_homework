@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D6BFAC82AA6AFEC00A7827C /* circle_explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D6BFAC62AA6AFEC00A7827C /* circle_explosion.mp3 */; };
+		4D6BFAC92AA6AFEC00A7827C /* Color Clownies - Circus (320 kbps).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D6BFAC72AA6AFEC00A7827C /* Color Clownies - Circus (320 kbps).mp3 */; };
+		4D6BFAD02AA6B12900A7827C /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6BFACF2AA6B12900A7827C /* Sounds.swift */; };
 		CE315D182A4D5C540099D2A1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315D172A4D5C540099D2A1 /* Model.swift */; };
 		CE315D1A2A4D5D510099D2A1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315D192A4D5D510099D2A1 /* View.swift */; };
-		CEA18F052A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CEA18F042A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 */; };
-		CEB9F8612AA4487F00BB3D47 /* circle_explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CEB9F8602AA4487F00BB3D47 /* circle_explosion.mp3 */; };
 		CED7F0B92A3575F3003DB4FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */; };
 		CED7F0BB2A3575F3003DB4FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0BA2A3575F3003DB4FB /* SceneDelegate.swift */; };
 		CED7F0BD2A3575F3003DB4FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0BC2A3575F3003DB4FB /* ViewController.swift */; };
@@ -20,10 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D6BFAC62AA6AFEC00A7827C /* circle_explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle_explosion.mp3; sourceTree = "<group>"; };
+		4D6BFAC72AA6AFEC00A7827C /* Color Clownies - Circus (320 kbps).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Color Clownies - Circus (320 kbps).mp3"; sourceTree = "<group>"; };
+		4D6BFACF2AA6B12900A7827C /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		CE315D172A4D5C540099D2A1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CE315D192A4D5D510099D2A1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		CEA18F042A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Color Clownies - Circus (320 kbps).mp3"; path = "../../../TEST/цирк/Color Clownies - Circus (320 kbps).mp3"; sourceTree = "<group>"; };
-		CEB9F8602AA4487F00BB3D47 /* circle_explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = circle_explosion.mp3; path = ../../../../Downloads/circle_explosion.mp3; sourceTree = "<group>"; };
 		CED7F0B52A3575F3003DB4FB /* кругименюятцвет.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "кругименюятцвет.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CED7F0BA2A3575F3003DB4FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,11 +47,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D6BFAC52AA6AFA300A7827C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4D6BFAC62AA6AFEC00A7827C /* circle_explosion.mp3 */,
+				4D6BFAC72AA6AFEC00A7827C /* Color Clownies - Circus (320 kbps).mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		4D6BFACA2AA6B06300A7827C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CED7F0BA2A3575F3003DB4FB /* SceneDelegate.swift */,
+				CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		4D6BFACB2AA6B0A500A7827C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4D6BFAD12AA6B7C600A7827C /* Sounds */,
+				CE315D172A4D5C540099D2A1 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4D6BFACC2AA6B0A900A7827C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE315D192A4D5D510099D2A1 /* View.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4D6BFACD2AA6B0AE00A7827C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4D6BFAD22AA6B7CE00A7827C /* Main View Controller */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4D6BFACE2AA6B0D700A7827C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CED7F0BE2A3575F3003DB4FB /* Main.storyboard */,
+				CED7F0C32A3575F4003DB4FB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		4D6BFAD12AA6B7C600A7827C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4D6BFACF2AA6B12900A7827C /* Sounds.swift */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		4D6BFAD22AA6B7CE00A7827C /* Main View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CED7F0BC2A3575F3003DB4FB /* ViewController.swift */,
+			);
+			path = "Main View Controller";
+			sourceTree = "<group>";
+		};
 		CEA18F032A3802D1005EB4D5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				CEA18F042A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 */,
-				CEB9F8602AA4487F00BB3D47 /* circle_explosion.mp3 */,
+				CED7F0C12A3575F4003DB4FB /* Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -57,8 +126,9 @@
 		CED7F0AC2A3575F3003DB4FB = {
 			isa = PBXGroup;
 			children = (
-				CEA18F032A3802D1005EB4D5 /* Assets */,
 				CED7F0B72A3575F3003DB4FB /* кругименюятцвет */,
+				4D6BFAC52AA6AFA300A7827C /* Sounds */,
+				CEA18F032A3802D1005EB4D5 /* Assets */,
 				CED7F0B62A3575F3003DB4FB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,14 +144,11 @@
 		CED7F0B72A3575F3003DB4FB /* кругименюятцвет */ = {
 			isa = PBXGroup;
 			children = (
-				CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */,
-				CED7F0BA2A3575F3003DB4FB /* SceneDelegate.swift */,
-				CED7F0BC2A3575F3003DB4FB /* ViewController.swift */,
-				CE315D172A4D5C540099D2A1 /* Model.swift */,
-				CE315D192A4D5D510099D2A1 /* View.swift */,
-				CED7F0BE2A3575F3003DB4FB /* Main.storyboard */,
-				CED7F0C12A3575F4003DB4FB /* Assets.xcassets */,
-				CED7F0C32A3575F4003DB4FB /* LaunchScreen.storyboard */,
+				4D6BFACE2AA6B0D700A7827C /* Storyboards */,
+				4D6BFACD2AA6B0AE00A7827C /* Controller */,
+				4D6BFACC2AA6B0A900A7827C /* View */,
+				4D6BFACB2AA6B0A500A7827C /* Model */,
+				4D6BFACA2AA6B06300A7827C /* Support Files */,
 				CED7F0C62A3575F4003DB4FB /* Info.plist */,
 			);
 			path = "кругименюятцвет";
@@ -145,11 +212,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D6BFAC82AA6AFEC00A7827C /* circle_explosion.mp3 in Resources */,
 				CED7F0C52A3575F4003DB4FB /* LaunchScreen.storyboard in Resources */,
 				CED7F0C22A3575F4003DB4FB /* Assets.xcassets in Resources */,
 				CED7F0C02A3575F3003DB4FB /* Main.storyboard in Resources */,
-				CEB9F8612AA4487F00BB3D47 /* circle_explosion.mp3 in Resources */,
-				CEA18F052A3802F2005EB4D5 /* Color Clownies - Circus (320 kbps).mp3 in Resources */,
+				4D6BFAC92AA6AFEC00A7827C /* Color Clownies - Circus (320 kbps).mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +230,7 @@
 				CED7F0BD2A3575F3003DB4FB /* ViewController.swift in Sources */,
 				CED7F0B92A3575F3003DB4FB /* AppDelegate.swift in Sources */,
 				CE315D1A2A4D5D510099D2A1 /* View.swift in Sources */,
+				4D6BFAD02AA6B12900A7827C /* Sounds.swift in Sources */,
 				CED7F0BB2A3575F3003DB4FB /* SceneDelegate.swift in Sources */,
 				CE315D182A4D5C540099D2A1 /* Model.swift in Sources */,
 			);
@@ -314,6 +382,7 @@
 				DEVELOPMENT_TEAM = 624Z3YM248;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "кругименюятцвет/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Circles;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -342,6 +411,7 @@
 				DEVELOPMENT_TEAM = 624Z3YM248;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "кругименюятцвет/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Circles;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
