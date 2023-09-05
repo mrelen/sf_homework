@@ -140,7 +140,7 @@ class ViewController: UIViewController {
         // Create a timer to add circles one by one
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             
-            if self.restartButton.isHidden && circleCount < 100 {
+            if self.restartButton.isHidden {
                 self.addCircle()
                 circleCount += 1
             } else {
