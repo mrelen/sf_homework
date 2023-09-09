@@ -12,6 +12,8 @@
 		4D6BFAD02AA6B12900A7827C /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6BFACF2AA6B12900A7827C /* Sounds.swift */; };
 		CE315D182A4D5C540099D2A1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315D172A4D5C540099D2A1 /* Model.swift */; };
 		CE315D1A2A4D5D510099D2A1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315D192A4D5D510099D2A1 /* View.swift */; };
+		CEB9F8852AAABDA600BB3D47 /* Confetty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9F8842AAABDA600BB3D47 /* Confetty.swift */; };
+		CEB9F8872AAC19AE00BB3D47 /* UIButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9F8862AAC19AE00BB3D47 /* UIButtonTitle.swift */; };
 		CED7F0B92A3575F3003DB4FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */; };
 		CED7F0BB2A3575F3003DB4FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0BA2A3575F3003DB4FB /* SceneDelegate.swift */; };
 		CED7F0BD2A3575F3003DB4FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7F0BC2A3575F3003DB4FB /* ViewController.swift */; };
@@ -26,7 +28,9 @@
 		4D6BFACF2AA6B12900A7827C /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		CE315D172A4D5C540099D2A1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CE315D192A4D5D510099D2A1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		CED7F0B52A3575F3003DB4FB /* кругименюятцвет.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "кругименюятцвет.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB9F8842AAABDA600BB3D47 /* Confetty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetty.swift; sourceTree = "<group>"; };
+		CEB9F8862AAC19AE00BB3D47 /* UIButtonTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonTitle.swift; sourceTree = "<group>"; };
+		CED7F0B52A3575F3003DB4FB /* Balls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Balls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED7F0B82A3575F3003DB4FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CED7F0BA2A3575F3003DB4FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CED7F0BC2A3575F3003DB4FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				CE315D192A4D5D510099D2A1 /* View.swift */,
+				CEB9F8842AAABDA600BB3D47 /* Confetty.swift */,
+				CEB9F8862AAC19AE00BB3D47 /* UIButtonTitle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -85,7 +91,7 @@
 		4D6BFACD2AA6B0AE00A7827C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4D6BFAD22AA6B7CE00A7827C /* Main View Controller */,
+				4D6BFAD22AA6B7CE00A7827C /* MainView Controller */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -107,12 +113,12 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-		4D6BFAD22AA6B7CE00A7827C /* Main View Controller */ = {
+		4D6BFAD22AA6B7CE00A7827C /* MainView Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CED7F0BC2A3575F3003DB4FB /* ViewController.swift */,
 			);
-			path = "Main View Controller";
+			path = "MainView Controller";
 			sourceTree = "<group>";
 		};
 		CEA18F032A3802D1005EB4D5 /* Assets */ = {
@@ -126,7 +132,7 @@
 		CED7F0AC2A3575F3003DB4FB = {
 			isa = PBXGroup;
 			children = (
-				CED7F0B72A3575F3003DB4FB /* кругименюятцвет */,
+				CED7F0B72A3575F3003DB4FB /* Balls */,
 				4D6BFAC52AA6AFA300A7827C /* Sounds */,
 				CEA18F032A3802D1005EB4D5 /* Assets */,
 				CED7F0B62A3575F3003DB4FB /* Products */,
@@ -136,12 +142,12 @@
 		CED7F0B62A3575F3003DB4FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CED7F0B52A3575F3003DB4FB /* кругименюятцвет.app */,
+				CED7F0B52A3575F3003DB4FB /* Balls.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CED7F0B72A3575F3003DB4FB /* кругименюятцвет */ = {
+		CED7F0B72A3575F3003DB4FB /* Balls */ = {
 			isa = PBXGroup;
 			children = (
 				4D6BFACE2AA6B0D700A7827C /* Storyboards */,
@@ -151,15 +157,15 @@
 				4D6BFACA2AA6B06300A7827C /* Support Files */,
 				CED7F0C62A3575F4003DB4FB /* Info.plist */,
 			);
-			path = "кругименюятцвет";
+			path = Balls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CED7F0B42A3575F3003DB4FB /* кругименюятцвет */ = {
+		CED7F0B42A3575F3003DB4FB /* Balls */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CED7F0C92A3575F4003DB4FB /* Build configuration list for PBXNativeTarget "кругименюятцвет" */;
+			buildConfigurationList = CED7F0C92A3575F4003DB4FB /* Build configuration list for PBXNativeTarget "Balls" */;
 			buildPhases = (
 				CED7F0B12A3575F3003DB4FB /* Sources */,
 				CED7F0B22A3575F3003DB4FB /* Frameworks */,
@@ -169,9 +175,9 @@
 			);
 			dependencies = (
 			);
-			name = "кругименюятцвет";
+			name = Balls;
 			productName = "кругименюятцвет";
-			productReference = CED7F0B52A3575F3003DB4FB /* кругименюятцвет.app */;
+			productReference = CED7F0B52A3575F3003DB4FB /* Balls.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -189,7 +195,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CED7F0B02A3575F3003DB4FB /* Build configuration list for PBXProject "кругименюятцвет" */;
+			buildConfigurationList = CED7F0B02A3575F3003DB4FB /* Build configuration list for PBXProject "Balls" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -202,7 +208,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CED7F0B42A3575F3003DB4FB /* кругименюятцвет */,
+				CED7F0B42A3575F3003DB4FB /* Balls */,
 			);
 		};
 /* End PBXProject section */
@@ -229,8 +235,10 @@
 			files = (
 				CED7F0BD2A3575F3003DB4FB /* ViewController.swift in Sources */,
 				CED7F0B92A3575F3003DB4FB /* AppDelegate.swift in Sources */,
+				CEB9F8872AAC19AE00BB3D47 /* UIButtonTitle.swift in Sources */,
 				CE315D1A2A4D5D510099D2A1 /* View.swift in Sources */,
 				4D6BFAD02AA6B12900A7827C /* Sounds.swift in Sources */,
+				CEB9F8852AAABDA600BB3D47 /* Confetty.swift in Sources */,
 				CED7F0BB2A3575F3003DB4FB /* SceneDelegate.swift in Sources */,
 				CE315D182A4D5C540099D2A1 /* Model.swift in Sources */,
 			);
@@ -381,8 +389,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 624Z3YM248;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "кругименюятцвет/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Circles;
+				INFOPLIST_FILE = Balls/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Balls;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -410,8 +418,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 624Z3YM248;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "кругименюятцвет/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Circles;
+				INFOPLIST_FILE = Balls/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Balls;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -433,7 +441,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CED7F0B02A3575F3003DB4FB /* Build configuration list for PBXProject "кругименюятцвет" */ = {
+		CED7F0B02A3575F3003DB4FB /* Build configuration list for PBXProject "Balls" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CED7F0C72A3575F4003DB4FB /* Debug */,
@@ -442,7 +450,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CED7F0C92A3575F4003DB4FB /* Build configuration list for PBXNativeTarget "кругименюятцвет" */ = {
+		CED7F0C92A3575F4003DB4FB /* Build configuration list for PBXNativeTarget "Balls" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CED7F0CA2A3575F4003DB4FB /* Debug */,

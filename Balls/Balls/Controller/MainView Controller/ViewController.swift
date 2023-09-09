@@ -3,24 +3,26 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    var circles: [UIView] = []   // закрыть протоколом
-    var audioPlayer: AVAudioPlayer?
-    var explosionAudioPlayer: AVAudioPlayer?
-    var isConfettiEnabled = false
-    var confettiViews: [UIView] = []
+    let gameModel: GameModel = GameModel()
+    let confettiManager: ConfettiManager = ConfettiManager()
+    
+  
     var pictureImageView: UIImageView!
     var isPictureVisible = false
+    var circleImageNames: [String] = ["red_circle", "green_circle", "blue_circle", "yellow_circle", "orange_circle"]
+    var previousCircleColor: String?
     
-    @IBOutlet weak var restartButton: UIButton! // кнопка перезапуска
-    @IBOutlet weak var musicButton: UIButton! // кнопка плеера
-    @IBOutlet weak var confettiButton: UIButton! // кнопка конфетти
+    
+    @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var musicButton: UIButton!
+    @IBOutlet weak var confettiButton: UIButton!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         // Setting all the audio parameters for view controller
-        setAudioParameters()
+        gameModel.setAudioParameters()
         
         setBackgroundImage()
         setupCircles()
@@ -35,33 +37,9 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        audioPlayer?.play() // воспроизведения звука
+        gameModel.audioPlayer?.play() // воспроизведения звука
     }
     
-    // Method for setting audio settings
-    //
-    func setAudioParameters() {
-        
-        do {
-            
-            audioPlayer = try AVAudioPlayer(contentsOf: Sounds().getAudioURL(resourse: "Color Clownies - Circus (320 kbps)", resourseType: "mp3"))
-            audioPlayer?.numberOfLoops = -1 // количество циклов = -1 для бесконечного цикла
-            audioPlayer?.prepareToPlay()
-            
-        } catch {
-            print("Не удалось инициализировать аудиоплеер: \(error)")
-        }
-        
-        do {
-            
-            explosionAudioPlayer = try AVAudioPlayer(contentsOf: Sounds().getAudioURL(resourse: "circle_explosion", resourseType: "mp3"))
-            explosionAudioPlayer?.prepareToPlay()
-            
-        } catch {
-            print("Не удалось инициализировать аудиоплеер: \(error)")
-        }
-        
-    }
     
     // Method for setting background image
     //
@@ -162,25 +140,33 @@ class ViewController: UIViewController {
     }
 
     func addCircle() {
-       
-        // Create and configure a new circle view
         let circleSize: CGFloat = 80
-        let circleImageNames: [String] = ["red_circle", "green_circle", "blue_circle", "yellow_circle", "orange_circle"]
-
+        
+        
+        let availableColors = circleImageNames.filter { $0 != previousCircleColor }
+        
+        
+        guard let randomImageName = availableColors.randomElement() else {
+            
+            previousCircleColor = nil
+            return
+        }
+        
         let circle = UIImageView(frame: CGRect(x: randomXPosition(),
                                                y: randomYPosition(),
                                                width: circleSize,
                                                height: circleSize))
-
-        // Assign a random image from the array of circleImageNames
-        if let randomImageName = circleImageNames.randomElement() {
-            circle.image = UIImage(named: randomImageName)
-        }
-
+        
+        // Assign the image based on the chosen color
+        circle.image = UIImage(named: randomImageName)
+        
         circle.contentMode = .scaleAspectFill
         view.addSubview(circle)
-        circles.append(circle)
-
+        gameModel.circles.append(circle)
+        
+        // Store the color of the current circle as the previous color
+        previousCircleColor = randomImageName
+        
         // Add a pan gesture recognizer to enable dragging the circle
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         circle.addGestureRecognizer(panGestureRecognizer)
@@ -195,8 +181,8 @@ class ViewController: UIViewController {
         // Set minification and magnification filters for the circle's layer
         circle.layer.minificationFilter = .trilinear
         circle.layer.magnificationFilter = .trilinear
-        
     }
+
 
     // создание и настройка серии кругов на экране
     func setupCircles() {
@@ -219,7 +205,7 @@ class ViewController: UIViewController {
             circle.contentMode = .scaleAspectFill
             
             view.addSubview(circle) // добавляет круг в качестве подвида к основному виду
-            circles.append(circle) // добавляет круг в массив circles, который отслеживает все созданные круги
+            gameModel.circles.append(circle) // добавляет круг в массив circles, который отслеживает все созданные круги
             
             // позволяет перетаскивать и перемещать круги
             let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
@@ -290,12 +276,12 @@ class ViewController: UIViewController {
     // Функция для проверки наложения между кругом и другими кругами
     func checkForOverlap(_ circle: UIView) {
        
-        for otherCircle in circles {
+        for otherCircle in gameModel.circles {
             
             if otherCircle != circle && circle.frame.intersects(otherCircle.frame) {
                
                 // звук лопающихся шариков
-                explosionAudioPlayer?.play()
+                gameModel.explosionAudioPlayer?.play()
                 
                 // Анимируем слияние кругов и меняем цвет
                 UIView.animate(withDuration: 0.3) {
@@ -325,7 +311,7 @@ class ViewController: UIViewController {
                     otherCircle.removeFromSuperview()
                     
                     // удаляем исключенный круг из массива кругов
-                    self.circles.removeAll { $0 == otherCircle }
+                    self.gameModel.circles.removeAll { $0 == otherCircle }
                     
                     // проверяем, остался ли только один круг
                     self.updateRestartButtonVisibility()
@@ -360,9 +346,9 @@ class ViewController: UIViewController {
     // функция для обновления видимости кнопки перезапуска
     func updateRestartButtonVisibility() {
         
-        if circles.count == 1 {
+        if gameModel.circles.count == 1 {
             
-            let lastCircle = circles[0]
+            let lastCircle = gameModel.circles[0]
             
             if lastCircle.alpha == 1 {
                 // анимируем непрозрачность последнего круга до 0
@@ -376,7 +362,7 @@ class ViewController: UIViewController {
             
         }
         
-        restartButton.isHidden = circles.count != 1
+        restartButton.isHidden = gameModel.circles.count != 1
         
         // перезапустить анимацию пульсации кнопки, если кнопка видна
         if !restartButton.isHidden {
@@ -392,9 +378,9 @@ class ViewController: UIViewController {
     // функция для удаления последнего круга из представления и массива кругов
     func removeLastCircle() {
         
-        if let lastCircle = circles.last {
+        if let lastCircle = gameModel.circles.last {
             lastCircle.removeFromSuperview()
-            circles.removeLast()
+            gameModel.circles.removeLast()
         }
         
     }
@@ -425,78 +411,20 @@ class ViewController: UIViewController {
     
     // музыка включается сразу и ее можно остановить кнопкой в правом углу экрана
     @IBAction func toggleMusic(_ sender: UIButton) {
-        
-        if audioPlayer?.isPlaying == true {
-            
-            audioPlayer?.pause()
-            musicButton.setTitle("🔕", for: .normal) // стоп
-            
+        if gameModel.audioPlayer?.isPlaying == true {
+            gameModel.audioPlayer?.pause()
         } else {
-            
-            audioPlayer?.play()
-            musicButton.setTitle("🔔", for: .normal) // плэй
-            
+            gameModel.audioPlayer?.play()
         }
-        
+
+        musicButton.updateMusicButtonTitle(isPlaying: gameModel.audioPlayer?.isPlaying == true)
     }
     
-    @IBAction func toggleConfetti (_ sender: UIButton) {
-        
-        isConfettiEnabled = !isConfettiEnabled
-        
-        if isConfettiEnabled {
-            
-            confettiButton.setTitle("🎉", for: .normal)
-            dropConfetti(amount: 10)
-            
-        } else {
-            confettiButton.setTitle("🎉", for: .normal)
-        }
-        
+    @IBAction func toggleConfetti(_ sender: UIButton) {
+        confettiManager.toggleConfetti(inView: view, amount: 10)
+        confettiButton.updateConfettiButtonTitle(isConfettiEnabled: confettiManager.isConfettiEnabled)
     }
-    
-    func dropConfetti(amount: Int) {
-        
-        guard isConfettiEnabled else { return }
-        
-        let screenBounds = UIScreen.main.bounds
-        for _ in 1...amount {
-            
-            let confettiView = UIView(frame: CGRect(x: CGFloat.random(in: 0...screenBounds.width),
-                                                    y: CGFloat.random(in: 0...screenBounds.height),
-                                                    width: 10,
-                                                    height: 10))
-            
-            confettiView.backgroundColor = UIColor.random()
-            confettiView.layer.cornerRadius = 5
-            
-            view.addSubview(confettiView)
-            confettiViews.append(confettiView)
-            
-            let animationDuration: TimeInterval = Double.random(in: 1...3)
-            let randomX = CGFloat.random(in: 0...screenBounds.width)
-            let randomY = CGFloat.random(in: 0...screenBounds.height)
-            let endPoint = CGPoint(x: randomX, y: screenBounds.height + 50 + randomY)
-            
-            UIView.animate(withDuration: animationDuration, delay: 0, options: .curveLinear, animations: {
-                confettiView.frame.origin = endPoint
-            }) { (_) in
-                
-                confettiView.removeFromSuperview()
-                
-                if let index = self.confettiViews.firstIndex(of: confettiView) {
-                    self.confettiViews.remove(at: index)
-                }
-                
-            }
-            
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.dropConfetti(amount: amount)
-        }
-        
-    }
+   
     
     @IBAction func restartButtonTapped(_ sender: UIButton) {
         
@@ -511,11 +439,11 @@ class ViewController: UIViewController {
             self.repositionPicture()
             
             // Удаляем существующие круги из вью
-            for circle in self.circles {
+            for circle in self.gameModel.circles {
                 circle.removeFromSuperview()
             }
             // Очищаем массив кругов
-            self.circles.removeAll()
+            self.gameModel.circles.removeAll()
             // Снова устанавливаем круги
             self.setupCircles()
             // Обновляем видимость кнопки перезапуска
@@ -526,20 +454,6 @@ class ViewController: UIViewController {
             self.startAddingCircles()
             
         }
-        
-    }
-    
-}
-
-// цвета конфетти
-extension UIColor {
-    
-    static func random() -> UIColor {
-        
-        let colors: [UIColor] = [.red, .green, .blue, .yellow, .orange, .purple, .cyan, .magenta]
-        let randomIndex = Int.random(in: 0..<colors.count)
-        
-        return colors[randomIndex]
         
     }
     
